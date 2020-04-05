@@ -110,7 +110,7 @@ Post 푯말(말풍선?) 눌렀을 경우에는 해당 포스트가 자세하게 
 
 
 
-####Rank
+#### Rank
 
 ![image-20200405170152648](README.assets/image-20200405170152648.png)
 
@@ -131,13 +131,13 @@ Post는 사진/영상/글을 올릴 수 있고, 댓글과 좋아요 팔로우(�
 
 
 
-####Flag
+#### Flag
 
 아직 생각한 바 없지만 특별한 요소가 없을 듯 하다.
 
 
 
-####Follow
+#### Follow
 
 <img src="README.assets/image-20200405170218527.png" alt="image-20200405170218527" style="zoom:50%;" />
 
@@ -145,7 +145,7 @@ Post는 사진/영상/글을 올릴 수 있고, 댓글과 좋아요 팔로우(�
 
 
 
-####Profile
+#### Profile
 
 ![image-20200405170233508](README.assets/image-20200405170233508.png)
 
