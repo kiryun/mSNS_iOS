@@ -225,8 +225,6 @@ publishing 까지 염두를 하고 있다면 Jenkins를 이용하도록 한다.
 
 
 
-
-
 ## Persona
 
 **Case1.**
