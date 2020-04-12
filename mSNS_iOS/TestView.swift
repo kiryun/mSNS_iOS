@@ -28,7 +28,7 @@ struct ContentView: View {
         .addQueryItem(name: "", value: "")
         .build()
         
-        
+        //
         apiClient.get(url: url)
             .onSuccess{ data in
                 
