@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B3362445ED1700A01FAE /* GeoCoding.swift */; };
 		82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7D2442EC7F0007D581 /* AppDelegate.swift */; };
 		82394D802442EC7F0007D581 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7F2442EC7F0007D581 /* SceneDelegate.swift */; };
 		82394D822442EC7F0007D581 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D812442EC7F0007D581 /* TestView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8202B3362445ED1700A01FAE /* GeoCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoding.swift; sourceTree = "<group>"; };
 		82394D7A2442EC7F0007D581 /* mSNS_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSNS_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82394D7D2442EC7F0007D581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82394D7F2442EC7F0007D581 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8202B3352445ECA500A01FAE /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		82394D712442EC7F0007D581 = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +84,9 @@
 				82394D972442EDBB0007D581 /* Utils */,
 				82394D922442ECD70007D581 /* Delegates */,
 				82394D912442ECCE0007D581 /* Communication */,
+				8202B3352445ECA500A01FAE /* Map */,
 				82394D812442EC7F0007D581 /* TestView.swift */,
+				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
 			);
 			path = mSNS_iOS;
 			sourceTree = "<group>";
@@ -195,6 +206,7 @@
 				82394D962442ED520007D581 /* Promise.swift in Sources */,
 				82394D822442EC7F0007D581 /* TestView.swift in Sources */,
 				82394D9D2442EFD50007D581 /* URLRequestBuilder.swift in Sources */,
+				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 			);
