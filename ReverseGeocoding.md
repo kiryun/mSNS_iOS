@@ -31,7 +31,7 @@ class Geocoding{
 
 ```swift
 func geocoding(){
-        // 경기도 수원시 장안구 수성로364번길 3
+        // 경기도 수원시 장안구 수성로364번길
         let location = CLLocation(latitude: 37.293418, longitude: 127.011916)
         let geo: Geocoding = Geocoding()
         geo.geocode(location: location) { placemark, error in
@@ -70,6 +70,8 @@ func geocoding(){
 **출력**
 
 ![image-20200415001232590](ReverseGeocoding.assets/image-20200415001232590.png)
+
+주소를 입력했더니 아래 4줄 처럼 깔끔하게 텍스트로 나오는 것을 확인 할 수 있다.
 
 위의 세줄 짜리 에러메세지는 MKMapView delegate를 세팅해주지 않아서 생기는 에러메세지 이다. 우리는 MKMapView를 사용할 필요가 없으므로 무시해줘도 된다.
 
