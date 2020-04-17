@@ -1,14 +1,31 @@
-# BasicMap
+# Map
 
 ## Info.plist
 
 우선 Location에 대한 권한을 얻어야 하므로 `Info.plist` 를 수정해주도록 한다.
 
-![image-20200409200514015](BasicMap.assets/image-20200409200514015.png)
+```xml
+...
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+...
+```
+
+![image-20200417114750027](Map.assets/image-20200417114750027.png)
 
 `Privacy - Location When In Use Usage Description` 항목을 추가해주도록 한다.
 이는 사용자에게 App을 사용할 때만 위치를 서비스를 사용할 것인지를 물어볼 수 있도록 해준다.
 Value값에는 물어 볼 때 문구를 설정해줄 수 있다.
+
+`Privacy - Location Always and When In Use Usage Description` 항목을 추가해주도록 한다.
+
+이는 사용자에게 App을 사용할 때만, 그리고 App을 사용하지 않을 때도 위치 서비스를 사용할 것인지를 물어볼 수 있도록 해준다.
+
+마찬가지로 Value값에는 물어 볼 때 문구를 설정해줄 수 있다.
+
+
 
 ## Google API before start
 
@@ -45,7 +62,7 @@ end
 
 pod을 성공적으로 설치했다면 apiKey를 발급받아야 한다. 이 내용은 https://developers.google.com/maps/documentation/ios-sdk/get-api-key?authuser=1#add_key 에 자세히 설명되어있으니 따로 적지는 않겠다.
 
-## Coding
+## Basic Map
 
 우선 AppDelegate에 발급받은 apiKey를 사용하도록 한다.
 
@@ -167,5 +184,5 @@ struct GoogMapControllerRepresentable: UIViewControllerRepresentable {
 class안에 struct GoogleMapControllerRepresentable을 선언했는데 이 부분이 해결책이다.
 UIViewcontrollerRepresentable에 관한 내용은 [여기](https://zeddios.tistory.com/763)에 잘 설명되어있으니 참고하길 바란다.
 
-![image-20200409204454037](BasicMap.assets/image-20200409204454037.png)
+![image-20200409204454037](Map.assets/image-20200409204454037.png)
 

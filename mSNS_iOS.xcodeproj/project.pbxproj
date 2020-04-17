@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -73,6 +73,7 @@
 		8202B3352445ECA500A01FAE /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -118,7 +119,6 @@
 				82394D912442ECCE0007D581 /* Communication */,
 				8202B3352445ECA500A01FAE /* Map */,
 				8202B33824488A8800A01FAE /* UI */,
-				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
 			);
 			path = mSNS_iOS;
 			sourceTree = "<group>";
@@ -166,7 +166,6 @@
 				B4E8B5EF8B949AD5B998ED5C /* Pods-mSNS_iOS.debug.xcconfig */,
 				6457463E8CD9DB129A2448A9 /* Pods-mSNS_iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -439,6 +438,7 @@
 				DEVELOPMENT_TEAM = HBZLH8M85C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = mSNS_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,6 +460,7 @@
 				DEVELOPMENT_TEAM = HBZLH8M85C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = mSNS_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

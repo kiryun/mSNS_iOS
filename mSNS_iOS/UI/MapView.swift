@@ -17,18 +17,30 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
     let defaultLocation = CLLocation(latitude: 42.361145, longitude: -71.057083)
     var zoomLevel: Float = 6.0
     let marker: GMSMarker = GMSMarker()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // 위치 추적 권한 요청
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
+        // 위치 업데이트
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        
+        // 현 위치 값 받아오기
+        guard let lat = self.locationManager.location?.coordinate.latitude, let lon = self.locationManager.location?.coordinate.longitude else {
+            return
+        }
+        
+        //test
+        self.geocoding()
 
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude, longitude: defaultLocation.coordinate.longitude, zoom: zoomLevel)
+        // 현위치 값으로 카메라 업데이트
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: zoomLevel)
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
@@ -71,37 +83,16 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         print("Error: \(error)")
     }
     
-}
-
-struct GoogMapControllerRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: UIViewControllerRepresentableContext<GoogMapControllerRepresentable>) -> GoogleMapController {
-        return GoogleMapController()
-    }
-
-    func updateUIViewController(_ uiViewController: GoogleMapController, context: UIViewControllerRepresentableContext<GoogMapControllerRepresentable>) {
-
-    }
-}
-
-struct MapView: View {
-    let apiClient = ApiClient()
     
-    var body: some View {
-        List{
-            Button(action: self.req) {
-                Text("REQ")
-            }
-            Button(action: self.geocoding){
-                Text("GeoCoding")
-            }
-        }.onAppear {
-            self.geocoding()
-        }
-    }
-
+    //temporary
     func geocoding(){
-        // 경기도 수원시 장안구 수성로364번길 3
-        let location = CLLocation(latitude: 37.293418, longitude: 127.011916)
+        // 경기도 수원시 장안구 수성로364번길 3 -> 37.293418, 127.011916
+        // 경기도 성남시 분당구 삼평동 대왕판교로645번길 -> 37.400214, 127.104215
+        guard let lat = self.locationManager.location?.coordinate.latitude, let lon = self.locationManager.location?.coordinate.longitude else {
+            return
+        }
+        
+        let location = CLLocation(latitude: lat, longitude: lon)
         let geo: Geocoding = Geocoding()
         geo.geocode(location: location) { placemark, error in
             if let error = error as? CLError {
@@ -135,32 +126,55 @@ struct MapView: View {
         }
     }
     
-    func req(){
-        let builder = ComponentBuilder()
-        let director = ExternalComponentDirector(builder: builder)
-        
-        let url = director
-        .setHost(host: "")
-        .setPath(path: "")
-        .addQueryItem(name: "", value: "")
-        .addQueryItem(name: "", value: "")
-        .build()
-        
-        //
-        apiClient.get(url: url)
-            .onSuccess{ data in
-                
-            }
-        .onFailure { error in
-            print("\(error)")
-        }
-    
+}
+
+struct GoogMapControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<GoogMapControllerRepresentable>) -> GoogleMapController {
+        return GoogleMapController()
+    }
+
+    func updateUIViewController(_ uiViewController: GoogleMapController, context: UIViewControllerRepresentableContext<GoogMapControllerRepresentable>) {
+
     }
 }
 
-
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
-    }
-}
+//struct MapView: View {
+//    let apiClient = ApiClient()
+//
+//    var body: some View {
+//        List{
+//            Button(action: self.req) {
+//                Text("REQ")
+//            }
+//            Button(action: self.geocoding){
+//                Text("GeoCoding")
+//            }
+//        }.onAppear {
+//            self.geocoding()
+//        }
+//    }
+//
+//
+//
+//    func req(){
+//        let builder = ComponentBuilder()
+//        let director = ExternalComponentDirector(builder: builder)
+//
+//        let url = director
+//        .setHost(host: "")
+//        .setPath(path: "")
+//        .addQueryItem(name: "", value: "")
+//        .addQueryItem(name: "", value: "")
+//        .build()
+//
+//        //
+//        apiClient.get(url: url)
+//            .onSuccess{ data in
+//
+//            }
+//        .onFailure { error in
+//            print("\(error)")
+//        }
+//
+//    }
+//}
