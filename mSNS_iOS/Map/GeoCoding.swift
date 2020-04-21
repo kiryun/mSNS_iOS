@@ -18,8 +18,19 @@ class Geocoding{
 //        self.lon = lon
 //    }
     
+    
+    func geoCode(address: String, completion: @escaping (_ placemark: [CLPlacemark]?, _ error: Error?) -> Void){
+        CLGeocoder().geocodeAddressString(address) { placemark, error in
+            guard let placemark = placemark, error == nil else{
+                completion(nil, error)
+                return
+            }
+            completion(placemark, nil)
+        }
+    }
+    
     // https://stackoverflow.com/questions/46869394/reverse-geocoding-in-swift-4
-    func geocode(location: CLLocation, completion: @escaping (_ placemark: [CLPlacemark]?, _ error: Error?) -> Void)  {
+    func reverseGeocode(location: CLLocation, completion: @escaping (_ placemark: [CLPlacemark]?, _ error: Error?) -> Void)  {
         CLGeocoder().reverseGeocodeLocation(location) { placemark, error in
             guard let placemark = placemark, error == nil else {
                 completion(nil, error)

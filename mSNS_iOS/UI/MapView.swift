@@ -37,7 +37,7 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         }
         
         //test
-        self.geocoding()
+        self.reverseGeocoding()
 
         // 현위치 값으로 카메라 업데이트
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: zoomLevel)
@@ -54,10 +54,14 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         mapView.settings.tiltGestures = true
         mapView.isIndoorEnabled = false
 
-        marker.position = CLLocationCoordinate2D(latitude: 42.361145, longitude: -71.057083)
+        //marker
+        
+//        marker.position = CLLocationCoordinate2D(latitude: 42.361145, longitude: -71.057083)
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         marker.title = "Boston"
         marker.snippet = "USA"
         marker.map = mapView
+        self.createMarker()
 
         view.addSubview(mapView)
     }
@@ -85,7 +89,7 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
     
     
     //temporary
-    func geocoding(){
+    func reverseGeocoding(){
         // 경기도 수원시 장안구 수성로364번길 3 -> 37.293418, 127.011916
         // 경기도 성남시 분당구 삼평동 대왕판교로645번길 -> 37.400214, 127.104215
         guard let lat = self.locationManager.location?.coordinate.latitude, let lon = self.locationManager.location?.coordinate.longitude else {
@@ -94,7 +98,7 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         
         let location = CLLocation(latitude: lat, longitude: lon)
         let geo: Geocoding = Geocoding()
-        geo.geocode(location: location) { placemark, error in
+        geo.reverseGeocode(location: location) { placemark, error in
             if let error = error as? CLError {
                 print("CLError:", error)
                 return
@@ -121,9 +125,32 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
 
                     // Mailind Address
 //                    print(placemark.mailingAddress ?? "unknown")
+                    
                 }
             }
         }
+    }
+    
+    
+    /// Marker 관련
+    // ref: https://stackoverflow.com/questions/39315219/custom-marker-with-user-image-inside-the-pin
+    // 사용자가 map을 변경시킬 때 마다 marker가 다르게 표출되어야 한다.
+    // GCD로 이 문제 해결이 가능할까?
+    
+    // marker 생성 GCD 이용해서 여러개 생성 하는 부분
+    func createMarker(){
+        self.setupMarker()
+    }
+    
+    // marker 특성을 정의
+    func setupMarker(){
+        // building custom marker
+        let markerImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
+        
+        // creating a marker view
+        let markerView = UIImageView(image: markerImage)
+        self.marker.iconView = markerView
+        self.mapView.selectedMarker = marker
     }
     
 }
