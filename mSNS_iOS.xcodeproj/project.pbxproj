@@ -21,12 +21,12 @@
 		82394D962442ED520007D581 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D952442ED520007D581 /* Promise.swift */; };
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
-		82394D9D2442EFD50007D581 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9C2442EFD50007D581 /* URLRequestBuilder.swift */; };
 		82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */; };
 		82CC23A6244DC66800DEF3FE /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC23A5244DC66800DEF3FE /* Map.swift */; };
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
 		82CE1BB5244F3A90005936EE /* bg_visit in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB2244F3A90005936EE /* bg_visit */; };
 		82CE1BB6244F3A90005936EE /* btn_heart_off_line in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB3244F3A90005936EE /* btn_heart_off_line */; };
+		82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE1BB82451E1F4005936EE /* MapMarker.swift */; };
 		E4EF67A36C11B375187591C0 /* Pods_mSNS_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76D451A8442086DFF75D5A /* Pods_mSNS_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,12 +49,12 @@
 		82394D952442ED520007D581 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
-		82394D9C2442EFD50007D581 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentBuilder.swift; sourceTree = "<group>"; };
 		82CC23A5244DC66800DEF3FE /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
 		82CE1BB2244F3A90005936EE /* bg_visit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg_visit; sourceTree = "<group>"; };
 		82CE1BB3244F3A90005936EE /* btn_heart_off_line */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_off_line; sourceTree = "<group>"; };
+		82CE1BB82451E1F4005936EE /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
 		B4E8B5EF8B949AD5B998ED5C /* Pods-mSNS_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSNS_iOS.debug.xcconfig"; path = "Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +83,7 @@
 			children = (
 				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
 				82CC23A5244DC66800DEF3FE /* Map.swift */,
+				82CE1BB82451E1F4005936EE /* MapMarker.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 			children = (
 				82394D932442ED0E0007D581 /* ApiClient.swift */,
 				82394D9A2442EE630007D581 /* ApiConfigure.swift */,
-				82394D9C2442EFD50007D581 /* URLRequestBuilder.swift */,
 				82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */,
 			);
 			path = Communication;
@@ -324,11 +324,11 @@
 				82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */,
 				82394D962442ED520007D581 /* Promise.swift in Sources */,
 				82394D822442EC7F0007D581 /* MapView.swift in Sources */,
-				82394D9D2442EFD50007D581 /* URLRequestBuilder.swift in Sources */,
 				82CC23A6244DC66800DEF3FE /* Map.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
+				82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
