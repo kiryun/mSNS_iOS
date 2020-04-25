@@ -15,12 +15,14 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
     var locationManager = CLLocationManager()
     var mapView: GMSMapView!
     let defaultLocation = CLLocation(latitude: 42.361145, longitude: -71.057083)
-    var zoomLevel: Float = 6.0
-    let marker: GMSMarker = GMSMarker()
+    var zoomLevel: Float = 14.0
+    
+    //marker
+    let marker: MapMarker = MapMarker() // marker initializer
+//    var marker: GMSMarker = GMSMarker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,7 +46,6 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
-        mapView.setMinZoom(14, maxZoom: 20)
         mapView.settings.compassButton = true
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -55,11 +56,7 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
         mapView.isIndoorEnabled = false
 
         //marker
-        
-//        marker.position = CLLocationCoordinate2D(latitude: 42.361145, longitude: -71.057083)
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        marker.title = "Boston"
-        marker.snippet = "USA"
         marker.map = mapView
         self.createMarker()
 
@@ -105,26 +102,11 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
             } else if let placemark = placemark?.first {
                 // you should always update your UI in the main thread
                 DispatchQueue.main.async {
-                    //  update UI here
-//                    print("name:", placemark.name ?? "unknown")
-
-//                    print("address1:", placemark.thoroughfare ?? "unknown")
-//                    print("address2:", placemark.subThoroughfare ?? "unknown")
                     print("neighborhood:", placemark.subLocality ?? "unknown")
                     print("city:", placemark.locality ?? "unknown")
 
                     print("state:", placemark.administrativeArea ?? "unknown")
-//                    print("subAdministrativeArea:", placemark.subAdministrativeArea ?? "unknown")
-//                    print("zip code:", placemark.postalCode ?? "unknown")
                     print("country:", placemark.country ?? "unknown", terminator: "\n\n")
-
-//                    print("isoCountryCode:", placemark.isoCountryCode ?? "unknown")
-//                    print("region identifier:", placemark.region?.identifier ?? "unknown")
-//
-//                    print("timezone:", placemark.timeZone ?? "unknown", terminator:"\n\n")
-
-                    // Mailind Address
-//                    print(placemark.mailingAddress ?? "unknown")
                     
                 }
             }
@@ -139,7 +121,8 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
     
     // marker 생성 GCD 이용해서 여러개 생성 하는 부분
     func createMarker(){
-        self.setupMarker()
+        self.mapView.selectedMarker = self.marker
+//        self.setupMarker()
     }
     
     // marker 특성을 정의
@@ -164,44 +147,3 @@ struct GoogMapControllerRepresentable: UIViewControllerRepresentable {
 
     }
 }
-
-//struct MapView: View {
-//    let apiClient = ApiClient()
-//
-//    var body: some View {
-//        List{
-//            Button(action: self.req) {
-//                Text("REQ")
-//            }
-//            Button(action: self.geocoding){
-//                Text("GeoCoding")
-//            }
-//        }.onAppear {
-//            self.geocoding()
-//        }
-//    }
-//
-//
-//
-//    func req(){
-//        let builder = ComponentBuilder()
-//        let director = ExternalComponentDirector(builder: builder)
-//
-//        let url = director
-//        .setHost(host: "")
-//        .setPath(path: "")
-//        .addQueryItem(name: "", value: "")
-//        .addQueryItem(name: "", value: "")
-//        .build()
-//
-//        //
-//        apiClient.get(url: url)
-//            .onSuccess{ data in
-//
-//            }
-//        .onFailure { error in
-//            print("\(error)")
-//        }
-//
-//    }
-//}
