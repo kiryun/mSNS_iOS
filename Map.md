@@ -186,3 +186,70 @@ UIViewcontrollerRepresentable에 관한 내용은 [여기](https://zeddios.tisto
 
 ![image-20200409204454037](Map.assets/image-20200409204454037.png)
 
+## Custom Map Marker
+
+우리가 원하는 Marker는 각 지역마다 가장 인기있는 post의 썸네일과 하트수 등을 표시해주는 마크이다.
+
+따라서 한번에 여러개의 Marker를 생성해줄 필요가 있으며 이를 신경쓰고서 개발을 하도록한다.
+
+우선 GMSMarker를 상속받는 class를 하나 생성하도록 한다.
+
+**MapMarker.swift**
+
+```swift
+import Foundation
+import UIKit
+import GoogleMaps
+
+class MapMarker: GMSMarker{
+    let background: UIImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
+    let heartIcon: UIImage = UIImage(named: "btn_heart_on")!.withRenderingMode(.alwaysTemplate)
+    let thumnail: UIImage = UIImage()
+    let textView: UITextView = UITextView()
+    
+    override init(){
+        super.init()
+        
+         // setup marker
+        let markerView = UIImageView(image: self.background)
+       
+        markerView.addSubview(UIImageView(image: self.heartIcon))
+        markerView.addSubview(UIImageView(image: self.thumnail))
+        markerView.addSubview(textView)
+        // marker building
+        self.iconView = markerView
+    }
+}
+
+```
+
+위의 코드는 GMSMarker에 우리의 원하는 모습으로 custom하는 코드이다.
+
+그리고 MapView에서 다음과 같이 표출하도록 한다.
+
+```swift
+// ... 
+
+class GoogleMapController: UIViewController, CLLocationManagerDelegate{
+  	// ...
+    //marker
+    let marker: MapMarker = MapMarker() // marker initializer
+
+  	override func viewDidload(){
+      	// ...
+      	self.createMarker()
+    }
+  
+  	// marker 생성 GCD를 이용해서 여러개 생성하는 부분
+  	func createMarker(){
+      	self.mapView.selectedMarker = self.marker
+    }
+}
+```
+
+꽤나 여러개의 marker를 표시할 수도있기 때문에 GCD사용을 염두해두고 작성하도록 한다.
+
+UI정리는 나중에 하도록 하고 우선은 구조와 구현만 신경쓰도록 한다.
+
+![image-20200425162426477](Map.assets/image-20200425162426477.png)
+

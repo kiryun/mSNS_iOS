@@ -28,6 +28,4 @@ class MapMarker: GMSMarker{
         // marker building
         self.iconView = markerView
     }
-    
-    
 }
