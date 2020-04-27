@@ -22,6 +22,7 @@
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
 		82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */; };
+		828478D3245701DD0024A143 /* GDAMCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828478D2245701DD0024A143 /* GDAMCoordinate.swift */; };
 		82CC23A6244DC66800DEF3FE /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC23A5244DC66800DEF3FE /* Map.swift */; };
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
 		82CE1BB5244F3A90005936EE /* bg_visit in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB2244F3A90005936EE /* bg_visit */; };
@@ -50,6 +51,7 @@
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
 		82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentBuilder.swift; sourceTree = "<group>"; };
+		828478D2245701DD0024A143 /* GDAMCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDAMCoordinate.swift; sourceTree = "<group>"; };
 		82CC23A5244DC66800DEF3FE /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
 		82CE1BB2244F3A90005936EE /* bg_visit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg_visit; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
 				82CC23A5244DC66800DEF3FE /* Map.swift */,
 				82CE1BB82451E1F4005936EE /* MapMarker.swift */,
+				828478D2245701DD0024A143 /* GDAMCoordinate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */,
+				828478D3245701DD0024A143 /* GDAMCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
