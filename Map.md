@@ -251,5 +251,5 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
 
 UI정리는 나중에 하도록 하고 우선은 구조와 구현만 신경쓰도록 한다.
 
-![image-20200425162426477](Map.assets/image-20200425162426477.png)
+
 

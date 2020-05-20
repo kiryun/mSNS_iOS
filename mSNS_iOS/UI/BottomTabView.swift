@@ -11,7 +11,7 @@ import SwiftUI
 struct BottomTabView: View {
     var body: some View {
         TabView{
-            GoogMapControllerRepresentable()
+            MapView()
                 .tabItem {
                     Image(systemName: "location")
                     Text("Map")

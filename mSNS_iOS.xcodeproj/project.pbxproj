@@ -22,12 +22,12 @@
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
 		82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */; };
-		828478D3245701DD0024A143 /* GDAMCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828478D2245701DD0024A143 /* GDAMCoordinate.swift */; };
 		82CC23A6244DC66800DEF3FE /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC23A5244DC66800DEF3FE /* Map.swift */; };
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
 		82CE1BB5244F3A90005936EE /* bg_visit in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB2244F3A90005936EE /* bg_visit */; };
 		82CE1BB6244F3A90005936EE /* btn_heart_off_line in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB3244F3A90005936EE /* btn_heart_off_line */; };
 		82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE1BB82451E1F4005936EE /* MapMarker.swift */; };
+		82D213D824754B150072D81D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D213D724754B150072D81D /* MapViewController.swift */; };
 		E4EF67A36C11B375187591C0 /* Pods_mSNS_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76D451A8442086DFF75D5A /* Pods_mSNS_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,12 +51,12 @@
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
 		82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentBuilder.swift; sourceTree = "<group>"; };
-		828478D2245701DD0024A143 /* GDAMCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDAMCoordinate.swift; sourceTree = "<group>"; };
 		82CC23A5244DC66800DEF3FE /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
 		82CE1BB2244F3A90005936EE /* bg_visit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg_visit; sourceTree = "<group>"; };
 		82CE1BB3244F3A90005936EE /* btn_heart_off_line */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_off_line; sourceTree = "<group>"; };
 		82CE1BB82451E1F4005936EE /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
+		82D213D724754B150072D81D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B4E8B5EF8B949AD5B998ED5C /* Pods-mSNS_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSNS_iOS.debug.xcconfig"; path = "Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,15 +80,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8202B3352445ECA500A01FAE /* Map */ = {
+		8202B3352445ECA500A01FAE /* Map_UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				8202B3362445ED1700A01FAE /* GeoCoding.swift */,
-				82CC23A5244DC66800DEF3FE /* Map.swift */,
-				82CE1BB82451E1F4005936EE /* MapMarker.swift */,
-				828478D2245701DD0024A143 /* GDAMCoordinate.swift */,
+				82D213DB24754CEB0072D81D /* View */,
+				82D213DA24754CD90072D81D /* ViewController */,
+				82D213D924754CD20072D81D /* Model */,
 			);
-			path = Map;
+			path = Map_UIKit;
 			sourceTree = "<group>";
 		};
 		8202B33824488A8800A01FAE /* UI */ = {
@@ -131,7 +131,7 @@
 				82394D972442EDBB0007D581 /* Utils */,
 				82394D922442ECD70007D581 /* Delegates */,
 				82394D912442ECCE0007D581 /* Communication */,
-				8202B3352445ECA500A01FAE /* Map */,
+				8202B3352445ECA500A01FAE /* Map_UIKit */,
 				8202B33824488A8800A01FAE /* UI */,
 			);
 			path = mSNS_iOS;
@@ -189,6 +189,30 @@
 				82CE1BB1244F3A90005936EE /* btn_heart_on */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		82D213D924754CD20072D81D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82CC23A5244DC66800DEF3FE /* Map.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		82D213DA24754CD90072D81D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82D213D724754B150072D81D /* MapViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		82D213DB24754CEB0072D81D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82CE1BB82451E1F4005936EE /* MapMarker.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A08BF67771C41FCA8A3E6FE6 /* Pods */ = {
@@ -321,6 +345,7 @@
 				8202B33F2448948200A01FAE /* AddView.swift in Sources */,
 				8202B33A24488AB800A01FAE /* BottomTabView.swift in Sources */,
 				82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */,
+				82D213D824754B150072D81D /* MapViewController.swift in Sources */,
 				82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */,
 				82394D802442EC7F0007D581 /* SceneDelegate.swift in Sources */,
 				8202B33C24488B2300A01FAE /* ProfileView.swift in Sources */,
@@ -332,7 +357,6 @@
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */,
-				828478D3245701DD0024A143 /* GDAMCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
