@@ -11,6 +11,12 @@ import UIKit
 import GoogleMaps
 
 class MapMarker: GMSMarker{
+    struct MarkerData{
+        var lat: Double?
+        var lon: Double?
+        var zoom: Double?
+    }
+    
     let background: UIImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
     let heartIcon: UIImage = UIImage(named: "btn_heart_on")!.withRenderingMode(.alwaysTemplate)
     let thumnail: UIImage = UIImage()

@@ -16,4 +16,13 @@ class Map{
     func getHotMarker(nowGPS: CLLocation){
         
     }
+    
+    // 서버에다 요청하고 받은 data를 marker의 model대로 넣어야 함
+    // 이건 closure? promise 에서 해봤던거 써볼 수 있을 듯 Data<Marker> 이런식으로
+    func getMarkerList(gps: CLLocationCoordinate2D, zoom: Float){
+        var lat = gps.latitude
+        var lon = gps.longitude
+//        self.apiClient
+        
+    }
 }

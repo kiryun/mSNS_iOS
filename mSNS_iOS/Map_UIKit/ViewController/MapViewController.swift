@@ -17,14 +17,19 @@ import GoogleMaps
 // Map -> {(MapMarker, ) -> MapViewController} -> MapView 형태임
 // { Model -> ViewController, View }(UIKit) -> View(SwiftUI)
 class MapViewController: UIViewController, CLLocationManagerDelegate{
+    //map관련 model
+    var map: Map = Map()
     var locationManager = CLLocationManager()
     var mapView: GMSMapView!
+    //나중에 지워야 하는 값
     let defaultLocation = CLLocation(latitude: 42.361145, longitude: -71.057083)
+    var nowLocation = CLLocation()
     var zoomLevel: Float = 14.0
     
     //marker
     let marker: MapMarker = MapMarker() // marker initializer
 //    var marker: GMSMarker = GMSMarker()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +86,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         case .authorizedAlways: fallthrough
         case .authorizedWhenInUse:
           print("Location status is OK.")
+//        @unknown default:
+//            //fatalerror
         }
     }
 
@@ -90,7 +97,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    //temporary
+    //test
     func reverseGeocoding(){
         // 경기도 수원시 장안구 수성로364번길 3 -> 37.293418, 127.011916
         // 경기도 성남시 분당구 삼평동 대왕판교로645번길 -> 37.400214, 127.104215
@@ -126,6 +133,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     // marker 생성 GCD 이용해서 여러개 생성 하는 부분
     func createMarker(){
+        // 현재 화면에 보여지고 있는 marker list 가져오기
+        guard let currentLocation = self.locationManager.location?.coordinate else{
+            return
+        }
+        let currentZoom = self.mapView.camera.zoom
+        self.map.getMarkerList(gps: currentLocation, zoom: currentZoom)
+        
+        
         self.mapView.selectedMarker = self.marker
 //        self.setupMarker()
     }
@@ -140,5 +155,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         self.marker.iconView = markerView
         self.mapView.selectedMarker = marker
     }
+    
     
 }
