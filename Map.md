@@ -186,7 +186,16 @@ UIViewcontrollerRepresentable에 관한 내용은 [여기](https://zeddios.tisto
 
 ![image-20200409204454037](Map.assets/image-20200409204454037.png)
 
-## Custom Map Marker
+## Map Marker
+
+우선 마커가 우리 화면에 나오기 까지의 과정을 생각해보기로 한다.
+
+1. 현재 유저가 보고있는 화면(또는 근사치)의 `lat과lon의 범위`, `GPS Zoom 상태` (param1, param2, param3)를 가져온다.
+2. param1 ~ 3를 갖고 서버에 요청하고 서버는 그에 맞는 marker의 lat, lon, thumnail, articleId, 등을 응답해준다.
+3. marker는 thumnail, heart 유무를 이용해 custom marker를 만들고 lat, lon을 이용해 그 위치에 표현해준다.
+4. zoom의 상태나 현재 보고있는 gps 화면 위치가 바뀔경우 1~3의 과정을 반복한다.
+
+### Basic marker
 
 우리가 원하는 Marker는 각 지역마다 가장 인기있는 post의 썸네일과 하트수 등을 표시해주는 마크이다.
 
@@ -250,6 +259,24 @@ class GoogleMapController: UIViewController, CLLocationManagerDelegate{
 꽤나 여러개의 marker를 표시할 수도있기 때문에 GCD사용을 염두해두고 작성하도록 한다.
 
 UI정리는 나중에 하도록 하고 우선은 구조와 구현만 신경쓰도록 한다.
+
+
+
+### window에만 존재하는 마커
+
+현재 보여지고 있는 화면(window)에서만 마커가 표출되게 하고싶다. 
+
+정확하게 한다고 하면 화면(사각형)의 4개의 좌표를 이용해 계산하는 방법도 있지만, 이는 비효율적이므로 현재 보여지고 있는 좌표의 중심과 zoom의 상태에 따라서 동그란 반경을 그려 그 안의 marker만 가져오도록 한다. (아래의 그림 참고)
+
+![image-20200521182640685](Map.assets/image-20200521182640685.png)
+
+그렇다면 서버에 현재 보여지고 있는 화면 중앙의 lat, lon 그리고 zoom 데이터를 보내는 코드를 작성한다.
+
+```swift
+
+```
+
+
 
 
 
