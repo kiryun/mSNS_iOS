@@ -31,7 +31,6 @@ class Geocoding{
 
 ```swift
 func geocoding(){
-        // 경기도 수원시 장안구 수성로364번길
         let location = CLLocation(latitude: 37.293418, longitude: 127.011916)
         let geo: Geocoding = Geocoding()
         geo.geocode(location: location) { placemark, error in

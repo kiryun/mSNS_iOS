@@ -18,7 +18,7 @@ import GoogleMaps
 // { Model -> ViewController, View }(UIKit) -> View(SwiftUI)
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     //map관련 model
-    var map: Map = Map()
+    var mapCoordinator: MapCoordinator = MapCoordinator()
     var locationManager = CLLocationManager()
     var mapView: GMSMapView!
     //나중에 지워야 하는 값
@@ -28,7 +28,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     //marker
     let marker: MapMarker = MapMarker() // marker initializer
-//    var marker: GMSMarker = GMSMarker()
     
     
     override func viewDidLoad() {
@@ -132,13 +131,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     // GCD로 이 문제 해결이 가능할까?
     
     // marker 생성 GCD 이용해서 여러개 생성 하는 부분
+    // crateMarker를 MapMarker 안으로 옮겨야 함
+    // self.smapMarker는 [GMSMarker] 형태
     func createMarker(){
         // 현재 화면에 보여지고 있는 marker list 가져오기
         guard let currentLocation = self.locationManager.location?.coordinate else{
             return
         }
         let currentZoom = self.mapView.camera.zoom
-        self.map.getMarkerList(gps: currentLocation, zoom: currentZoom)
+        
+        //MarkerData + MapCoordinator -> MapMarker
+        self.mapCoordinator.getMarkerList(gps: currentLocation, zoom: currentZoom)
         
         
         self.mapView.selectedMarker = self.marker

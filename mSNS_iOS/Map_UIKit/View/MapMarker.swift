@@ -11,12 +11,6 @@ import UIKit
 import GoogleMaps
 
 class MapMarker: GMSMarker{
-    struct MarkerData{
-        var lat: Double?
-        var lon: Double?
-        var zoom: Double?
-    }
-    
     let background: UIImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
     let heartIcon: UIImage = UIImage(named: "btn_heart_on")!.withRenderingMode(.alwaysTemplate)
     let thumnail: UIImage = UIImage()
@@ -24,10 +18,10 @@ class MapMarker: GMSMarker{
     
     override init(){
         super.init()
-        
+
          // setup marker
         let markerView = UIImageView(image: self.background)
-       
+
         markerView.addSubview(UIImageView(image: self.heartIcon))
         markerView.addSubview(UIImageView(image: self.thumnail))
         markerView.addSubview(textView)
