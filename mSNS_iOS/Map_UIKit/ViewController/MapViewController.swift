@@ -27,8 +27,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     var zoomLevel: Float = 14.0
     
     //marker
+    //marker는 지울 것
     let marker: MapMarker = MapMarker() // marker initializer
-    
+    var markers: [MapMarker]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,8 +125,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
     
-    
-    /// Marker 관련
+}
+
+extension MapViewController{
+     /// Marker 관련
     // ref: https://stackoverflow.com/questions/39315219/custom-marker-with-user-image-inside-the-pin
     // 사용자가 map을 변경시킬 때 마다 marker가 다르게 표출되어야 한다.
     // GCD로 이 문제 해결이 가능할까?
@@ -141,11 +144,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         let currentZoom = self.mapView.camera.zoom
         
         //MarkerData + MapCoordinator -> MapMarker
-        self.mapCoordinator.getMarkerList(gps: currentLocation, zoom: currentZoom)
+        guard let markerData: [MarkerData] = self.mapCoordinator.getMarkerList(gps: currentLocation, zoom: currentZoom) else{
+            print("markerData is nil")
+            return
+        }
+        
+        // M-V-C 에서 Model과 View는 서로 직접적으로 커뮤니케이션해서는 안됨.
+        // Controller에서 View(Marker)에 대한 정보를 넣어줘야함
+        for each in markerData{
+            let tempMarker = MapMarker()
+            
+            tempMarker.position.latitude = each.lat!
+            tempMarker.position.longitude = each.lon!
+            
+            self.markers.append(tempMarker)
+        }
         
         
         self.mapView.selectedMarker = self.marker
 //        self.setupMarker()
+    }
+
+    // gistList의 값으로 (현재 보여지고 있는 화면에만) 폴리곤 그려줘야함.
+    // 아 이거 마커에 data다들어있어서 MapView에서 Marker를 컨트롤 하는게 아닌거 같음.
+    // 따로 MarkerController 만들어서 delegate, dataSource 이용해서 MapView에서 표현해주도록 하는게 맞는듯 함.
+    func gistDraw(){
+        
     }
     
     // marker 특성을 정의
@@ -158,6 +182,4 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         self.marker.iconView = markerView
         self.mapView.selectedMarker = marker
     }
-    
-    
 }
