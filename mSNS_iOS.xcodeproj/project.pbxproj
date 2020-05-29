@@ -22,6 +22,7 @@
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
 		82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */; };
+		82B68966248129DB00D4232A /* MapMarkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B68965248129DB00D4232A /* MapMarkerController.swift */; };
 		82CC23A6244DC66800DEF3FE /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC23A5244DC66800DEF3FE /* MapCoordinator.swift */; };
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
 		82CE1BB5244F3A90005936EE /* bg_visit in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB2244F3A90005936EE /* bg_visit */; };
@@ -52,6 +53,7 @@
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
 		82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentBuilder.swift; sourceTree = "<group>"; };
+		82B68965248129DB00D4232A /* MapMarkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerController.swift; sourceTree = "<group>"; };
 		82CC23A5244DC66800DEF3FE /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
 		82CE1BB2244F3A90005936EE /* bg_visit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg_visit; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				82D213D724754B150072D81D /* MapViewController.swift */,
+				82B68965248129DB00D4232A /* MapMarkerController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				82394D822442EC7F0007D581 /* MapView.swift in Sources */,
 				82CC23A6244DC66800DEF3FE /* MapCoordinator.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
+				82B68966248129DB00D4232A /* MapMarkerController.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */,
