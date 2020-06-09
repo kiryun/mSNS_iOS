@@ -10,6 +10,6 @@ import Foundation
 
 struct User{
     static let shared = User()
-    
     var uID: Int?
 }
+
