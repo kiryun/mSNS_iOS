@@ -18,7 +18,7 @@ import GoogleMaps
 // { Model -> ViewController, View }(UIKit) -> View(SwiftUI)
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     //map관련 model
-    var mapCoordinator: MapCoordinator = MapCoordinator()
+    var markerCoordinator: MarkerCoordinator = MarkerCoordinator()
     var locationManager = CLLocationManager()
     var mapView: GMSMapView!
     //나중에 지워야 하는 값
@@ -143,19 +143,18 @@ extension MapViewController{
         }
         let currentZoom = self.mapView.camera.zoom
         
-        //MarkerData + MapCoordinator -> MapMarker
-        guard let markerData: [MarkerData] = self.mapCoordinator.getMarkerList(gps: currentLocation, zoom: currentZoom) else{
-            print("markerData is nil")
+        //MarkerData + markerCoordinator -> MapMarker
+        guard let markerDataSet: MarkerDataSet = self.markerCoordinator.testDataSet() else{
             return
         }
         
         // M-V-C 에서 Model과 View는 서로 직접적으로 커뮤니케이션해서는 안됨.
         // Controller에서 View(Marker)에 대한 정보를 넣어줘야함
-        for each in markerData{
+        for each in markerDataSet.data_set{
             let tempMarker = MapMarker()
             
-            tempMarker.position.latitude = each.lat!
-            tempMarker.position.longitude = each.lon!
+            tempMarker.position.latitude = each.lat
+            tempMarker.position.longitude = each.lon
             
             self.markers.append(tempMarker)
         }
