@@ -28,7 +28,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     //marker
     //marker는 지울 것
-    let marker: MapMarker = MapMarker() // marker initializer
+//    let marker: MapMarker = MapMarker() // marker initializer
     var markers: [MapMarker] = [MapMarker]()
     
     override func viewDidLoad() {
@@ -66,8 +66,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         mapView.isIndoorEnabled = false
 
         //marker
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        marker.map = mapView
+        // only test
+//        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+//        marker.map = mapView
         self.createMarker()
 
         view.addSubview(mapView)
@@ -127,6 +128,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
 }
 
+//Marker 관련 메서드
 extension MapViewController{
      /// Marker 관련
     // ref: https://stackoverflow.com/questions/39315219/custom-marker-with-user-image-inside-the-pin
@@ -137,34 +139,56 @@ extension MapViewController{
     // crateMarker를 MapMarker 안으로 옮겨야 함
     // self.smapMarker는 [GMSMarker] 형태
     func createMarker(){
-        // 현재 화면에 보여지고 있는 marker list 가져오기
+        // 1. 현재 화면에 보여지고 있는 marker list 가져오기
         guard let currentLocation = self.locationManager.location?.coordinate else{
             return
         }
         let currentZoom = self.mapView.camera.zoom
-        
         //MarkerData + markerCoordinator -> MapMarker
         guard let markerDataSet: MarkerDataSet = self.markerCoordinator.testDataSet() else{
             return
         }
         
+        // 2. 가져온 marekr들 특성과 외형을 정의
         // M-V-C 에서 Model과 View는 서로 직접적으로 커뮤니케이션해서는 안됨.
         // Controller에서 View(Marker)에 대한 정보를 넣어줘야함
         print(markerDataSet.data_set[0].lat)
         for each in markerDataSet.data_set{
             let tempMarker = MapMarker()
+            //특성 정의
+            self.setupMarker(marker: tempMarker, lat: each.lat, lon: each.lon)
             
-            tempMarker.position.latitude = each.lat
-            tempMarker.position.longitude = each.lon
-            
+            // 각 marker의 데이터 저장, index 저장할 필요가 있는지는 확인해봐야함
             self.markers.append(tempMarker)
+            
+            // map에 marekr 넣기
+            // ref: https://stackoverflow.com/questions/49258862/put-multiple-markers-in-google-maps-swift
+            tempMarker.map = self.mapView
+            
         }
         
         
-        self.mapView.selectedMarker = self.marker
+//        self.mapView.selectedMarker = self.marker
 //        self.setupMarker()
     }
+    
+    // marker의 특성, 외형을 설정
+    func setupMarker(marker: MapMarker, lat: Double, lon: Double){
+        
+        marker.position.latitude = lat
+        marker.position.longitude = lon
+        
+        // building custom marker
+        let markerImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
+        
+        // creating a marker view
+        let markerView = UIImageView(image: markerImage)
+        marker.iconView = markerView
+    }
+}
 
+// Polygon 관련
+extension MapViewController{
     // gistList의 값으로 (현재 보여지고 있는 화면에만) 폴리곤 그려줘야함.
     // 아 이거 마커에 data다들어있어서 MapView에서 Marker를 컨트롤 하는게 아닌거 같음.
     // 따로 MarkerController 만들어서 delegate, dataSource 이용해서 MapView에서 표현해주도록 하는게 맞는듯 함.
@@ -172,14 +196,4 @@ extension MapViewController{
         
     }
     
-    // marker 특성을 정의
-    func setupMarker(){
-        // building custom marker
-        let markerImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
-        
-        // creating a marker view
-        let markerView = UIImageView(image: markerImage)
-        self.marker.iconView = markerView
-        self.mapView.selectedMarker = marker
-    }
 }
