@@ -29,7 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     //marker
     //marker는 지울 것
     let marker: MapMarker = MapMarker() // marker initializer
-    var markers: [MapMarker]!
+    var markers: [MapMarker] = [MapMarker]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +150,7 @@ extension MapViewController{
         
         // M-V-C 에서 Model과 View는 서로 직접적으로 커뮤니케이션해서는 안됨.
         // Controller에서 View(Marker)에 대한 정보를 넣어줘야함
+        print(markerDataSet.data_set[0].lat)
         for each in markerDataSet.data_set{
             let tempMarker = MapMarker()
             
