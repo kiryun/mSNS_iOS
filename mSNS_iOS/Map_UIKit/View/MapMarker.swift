@@ -20,12 +20,12 @@ class MapMarker: GMSMarker{
         super.init()
 
          // setup marker
-        let markerView = UIImageView(image: self.background)
+//        let markerView = UIImageView(image: self.background)
 
-        markerView.addSubview(UIImageView(image: self.heartIcon))
-        markerView.addSubview(UIImageView(image: self.thumnail))
-        markerView.addSubview(textView)
+//        markerView.addSubview(UIImageView(image: self.heartIcon))
+//        markerView.addSubview(UIImageView(image: self.thumnail))
+//        markerView.addSubview(textView)
         // marker building
-        self.iconView = markerView
+//        self.iconView = markerView
     }
 }

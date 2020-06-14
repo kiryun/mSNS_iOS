@@ -178,12 +178,12 @@ extension MapViewController{
         marker.position.latitude = lat
         marker.position.longitude = lon
         
-        // building custom marker
-        let markerImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
-        
-        // creating a marker view
-        let markerView = UIImageView(image: markerImage)
-        marker.iconView = markerView
+//        // building custom marker
+//        let markerImage = UIImage(named: "bg_visit")!.withRenderingMode(.alwaysTemplate)
+//        
+//        // creating a marker view
+//        let markerView = UIImageView(image: markerImage)
+//        marker.iconView = markerView
     }
 }
 
