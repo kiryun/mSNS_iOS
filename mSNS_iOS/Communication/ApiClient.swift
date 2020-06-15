@@ -82,3 +82,30 @@ class ApiClient {
             return self.session.dataTask(with: request)
         }
 }
+
+// Promise 말고 vanilla 한 방법
+extension ApiClient{
+    // 나중에 이 밑에 메서드들 Generic 사용해서 Codable data 를 핸들링 할 수 있도록 하자.
+    func _get(url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+        var request: URLRequest = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        request.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+        
+        self.session.dataTask(with: request, completionHandler: completionHandler)
+    }
+    
+    
+    func _post(url: URL, body: NSMutableDictionary, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+        var request: URLRequest = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
+        }catch{
+            print("APIClient._post: \(error)")
+        }
+        
+        self.session.dataTask(with: request, completionHandler: completionHandler)
+    }
+}
