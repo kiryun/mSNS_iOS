@@ -27,7 +27,7 @@
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
 		82CE1BB5244F3A90005936EE /* bg_visit in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB2244F3A90005936EE /* bg_visit */; };
 		82CE1BB6244F3A90005936EE /* btn_heart_off_line in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB3244F3A90005936EE /* btn_heart_off_line */; };
-		82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE1BB82451E1F4005936EE /* MapMarker.swift */; };
+		82CE1BB92451E1F4005936EE /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE1BB82451E1F4005936EE /* CustomMarkerView.swift */; };
 		82D213D824754B150072D81D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D213D724754B150072D81D /* MapViewController.swift */; };
 		82F0D1B4247AA33000AF0F1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F0D1B3247AA33000AF0F1E /* User.swift */; };
 		E4EF67A36C11B375187591C0 /* Pods_mSNS_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76D451A8442086DFF75D5A /* Pods_mSNS_iOS.framework */; };
@@ -58,7 +58,7 @@
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
 		82CE1BB2244F3A90005936EE /* bg_visit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg_visit; sourceTree = "<group>"; };
 		82CE1BB3244F3A90005936EE /* btn_heart_off_line */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_off_line; sourceTree = "<group>"; };
-		82CE1BB82451E1F4005936EE /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
+		82CE1BB82451E1F4005936EE /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		82D213D724754B150072D81D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		82F0D1B3247AA33000AF0F1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B4E8B5EF8B949AD5B998ED5C /* Pods-mSNS_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSNS_iOS.debug.xcconfig"; path = "Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		82D213DB24754CEB0072D81D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				82CE1BB82451E1F4005936EE /* MapMarker.swift */,
+				82CE1BB82451E1F4005936EE /* CustomMarkerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
-				82CE1BB92451E1F4005936EE /* MapMarker.swift in Sources */,
+				82CE1BB92451E1F4005936EE /* CustomMarkerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     //marker
     //marker는 지울 것
 //    let marker: MapMarker = MapMarker() // marker initializer
-    var markers: [MapMarker] = [MapMarker]()
+    var markers: [CustomMarkerView] = [CustomMarkerView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +154,7 @@ extension MapViewController{
         // Controller에서 View(Marker)에 대한 정보를 넣어줘야함
         print(markerDataSet.data_set[0].lat)
         for each in markerDataSet.data_set{
-            let tempMarker = MapMarker()
+            let tempMarker = CustomMarkerView()
             //특성 정의
             self.setupMarker(marker: tempMarker, lat: each.lat, lon: each.lon)
             
@@ -173,7 +173,7 @@ extension MapViewController{
     }
     
     // marker의 특성, 외형을 설정
-    func setupMarker(marker: MapMarker, lat: Double, lon: Double){
+    func setupMarker(marker: CustomMarkerView, lat: Double, lon: Double){
         
         marker.position.latitude = lat
         marker.position.longitude = lon
