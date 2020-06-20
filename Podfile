@@ -6,6 +6,9 @@ target 'mSNS_iOS' do
   use_frameworks!
 	pod 'GoogleMaps'
   	pod 'GooglePlaces'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Auth'
+	pod 'GoogleSignIn'
   # Pods for mSNS_iOS
 
 end

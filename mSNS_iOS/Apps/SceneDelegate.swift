@@ -8,8 +8,10 @@
 
 import UIKit
 import SwiftUI
+import Firebase
+import GoogleSignIn
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
@@ -20,15 +22,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let rootView = BottomTabView()
-
-        // Use a UIHostingController as window root view controller.
+//        let rootView = BottomTabView()
+//
+//        // Use a UIHostingController as window root view controller.
+//        if let windowScene = scene as? UIWindowScene {
+//            let window = UIWindow(windowScene: windowScene)
+//            window.rootViewController = UIHostingController(rootView: rootView)
+//            self.window = window
+//            window.makeKeyAndVisible()
+//        }
+        
+        // GoogleSignIn initialize
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance()?.delegate = self
+        
         if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: rootView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+                    let window = UIWindow(windowScene: windowScene)
+                    
+                    
+                    if Auth.auth().currentUser != nil{
+                        window.rootViewController = UIHostingController(rootView: BottomTabView())
+                    }else{
+                        window.rootViewController = LoginViewController()
+                    }
+        //            window.rootViewController = UIHostingController(rootView: contentView)
+                    self.window = window
+                    window.makeKeyAndVisible()
+                }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -62,3 +82,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate{
+    // MARK: GIDSignInDelegate
+    // 해당 함수는 로그인 할 때 호출이 된다. 즉, 자동로그인 할 때 View를 어떻게 표현을 해줄 것인가를 여기서 설정해야함.
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        
+        // Google SignIn
+        if let error = error {
+            // ...
+            print("AppDelegate.sign().error = error")
+            print("\(error.localizedDescription)")
+            return
+        }
+        
+        
+        // Perform any operations on signed in user here.
+        guard let authentication = user.authentication else { return }
+        
+        // return A FIRAuthCredential containing the Google credentials.
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                        accessToken: authentication.accessToken)
+        
+        // Finally
+        // Firebase Auth signIn
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error{
+                print("AppDelegate.sign().auth.signIn.error = error")
+                print("\(error.localizedDescription)")
+                return
+            }
+            
+            // user is signed in
+            // ...
+            
+            print("AppDelegate.sign().auth.signIn.authResult.profile: \((authResult?.additionalUserInfo?.profile)!)")
+            self.window?.rootViewController = UIHostingController(rootView: BottomTabView())
+            self.window?.makeKeyAndVisible()
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print("sign didDisconnectWith")
+    }
+}

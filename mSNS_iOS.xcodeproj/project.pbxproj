@@ -11,6 +11,9 @@
 		8202B33A24488AB800A01FAE /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B33924488AB800A01FAE /* BottomTabView.swift */; };
 		8202B33C24488B2300A01FAE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B33B24488B2300A01FAE /* ProfileView.swift */; };
 		8202B33F2448948200A01FAE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B33E2448948200A01FAE /* AddView.swift */; };
+		8234CA5F249E4DB400CDDA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8234CA5E249E4DB400CDDA4C /* GoogleService-Info.plist */; };
+		8234CA62249E51A500CDDA4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA61249E51A500CDDA4C /* LoginViewController.swift */; };
+		8234CA64249E51AC00CDDA4C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA63249E51AC00CDDA4C /* LoginView.swift */; };
 		82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7D2442EC7F0007D581 /* AppDelegate.swift */; };
 		82394D802442EC7F0007D581 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7F2442EC7F0007D581 /* SceneDelegate.swift */; };
 		82394D822442EC7F0007D581 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D812442EC7F0007D581 /* MapView.swift */; };
@@ -40,6 +43,9 @@
 		8202B33924488AB800A01FAE /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
 		8202B33B24488B2300A01FAE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8202B33E2448948200A01FAE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		8234CA5E249E4DB400CDDA4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8234CA61249E51A500CDDA4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8234CA63249E51AC00CDDA4C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82394D7A2442EC7F0007D581 /* mSNS_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSNS_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82394D7D2442EC7F0007D581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82394D7F2442EC7F0007D581 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		8234CA60249E518C00CDDA4C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8234CA61249E51A500CDDA4C /* LoginViewController.swift */,
+				8234CA63249E51AC00CDDA4C /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		82394D712442EC7F0007D581 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +147,7 @@
 				82394D912442ECCE0007D581 /* Communication */,
 				82F0D1B2247AA32100AF0F1E /* Model */,
 				8202B3352445ECA500A01FAE /* Map_UIKit */,
+				8234CA60249E518C00CDDA4C /* Login */,
 				8202B33824488A8800A01FAE /* UI */,
 				82394D922442ECD70007D581 /* Apps */,
 				82CE1BB0244F39A6005936EE /* Resources */,
@@ -139,6 +155,7 @@
 				82394D832442EC800007D581 /* Assets.xcassets */,
 				82394D882442EC800007D581 /* LaunchScreen.storyboard */,
 				82394D8B2442EC800007D581 /* Info.plist */,
+				8234CA5E249E4DB400CDDA4C /* GoogleService-Info.plist */,
 			);
 			path = mSNS_iOS;
 			sourceTree = "<group>";
@@ -258,6 +275,7 @@
 				82394D772442EC7F0007D581 /* Frameworks */,
 				82394D782442EC7F0007D581 /* Resources */,
 				365BFF3E5AA0A5DCD762E704 /* [CP] Copy Pods Resources */,
+				A52A958D0788EEF40DF31FA5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,6 +330,7 @@
 				82394D872442EC800007D581 /* Preview Assets.xcassets in Resources */,
 				82394D842442EC800007D581 /* Assets.xcassets in Resources */,
 				82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */,
+				8234CA5F249E4DB400CDDA4C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +376,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A52A958D0788EEF40DF31FA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mSNS_iOS/Pods-mSNS_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -364,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8234CA62249E51A500CDDA4C /* LoginViewController.swift in Sources */,
 				8202B33F2448948200A01FAE /* AddView.swift in Sources */,
 				8202B33A24488AB800A01FAE /* BottomTabView.swift in Sources */,
 				82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */,
@@ -379,6 +416,7 @@
 				82CC23A6244DC66800DEF3FE /* MarkerCoordinator.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
+				8234CA64249E51AC00CDDA4C /* LoginView.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* CustomMarkerView.swift in Sources */,
 			);
