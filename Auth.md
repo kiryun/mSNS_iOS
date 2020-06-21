@@ -240,5 +240,37 @@ extension SceneDelegate{
 }
 ```
 
+각각 메서드를 살펴보도록 하자.
 
+`sign(_:didSignInFor:withError:)` 메서드는 signIn에 성공했을 때 호출되는 delegate 메서드 이다.
+
+이안에 googleSignIn idToken과 accessToken을 이용해 credential을 만든다. 
+
+credential을 이용해 FirebaseAuth에 로그인하고 signIn에 성공했으면 rootViewController를 `BottomTabView` 로 지정한다.
+
+
+
+`sign(_:didDisconnectWith:error:)` 메서드는 disconnect에 성공했을 때 호출되는 메서드이다.
+
+현재 FirebaseAuth를 사용하고 있기 때문에 따로 내용을 채워줄 필요는 없다.
+
+> **SignOut과 Disconnect 용어에 대한 정리**
+>
+> `GIDSignIn.sharedInsctance()` 를 살펴보면
+>
+> ```swift
+> /// Marks current user as being in the signed out state.
+> open func signOut()
+> 
+> 
+> /// Disconnects the current user from the app and revokes previous authentication. If the operation
+> /// succeeds, the OAuth 2.0 token is also removed from keychain.
+> open func disconnect()
+> ```
+>
+> signOut은 단순히 사용자를 로그아웃된 상태로 표시하는 것. **또한 SignOut은 아무런 delegate method를 호출하지 않는다.**
+>
+> disconnect는 현재 사용자를 앱에서 연결 해제하고 인증을 취소한다. disconnect 작업이 성공하면 OAuth2.0 토큰도 키체인에서 제거된다.
+>
+> 다시말해 Application에서는 더이상 Google OAuth 2.0 에 접근을 할 수 없는 상태가 되어버린다.
 

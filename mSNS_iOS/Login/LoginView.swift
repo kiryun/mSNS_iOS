@@ -8,14 +8,13 @@
 
 import SwiftUI
 
-struct LoginView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct LoginView: UIViewControllerRepresentable {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<LoginView>) -> LoginViewController {
+        return LoginViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: LoginViewController, context: UIViewControllerRepresentableContext<LoginView>) {
+        
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
