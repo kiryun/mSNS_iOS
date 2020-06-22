@@ -12,8 +12,8 @@
 		8202B33C24488B2300A01FAE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B33B24488B2300A01FAE /* ProfileView.swift */; };
 		8202B33F2448948200A01FAE /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8202B33E2448948200A01FAE /* AddView.swift */; };
 		8234CA5F249E4DB400CDDA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8234CA5E249E4DB400CDDA4C /* GoogleService-Info.plist */; };
-		8234CA62249E51A500CDDA4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA61249E51A500CDDA4C /* LoginViewController.swift */; };
-		8234CA64249E51AC00CDDA4C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA63249E51AC00CDDA4C /* LoginView.swift */; };
+		8234CA62249E51A500CDDA4C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA61249E51A500CDDA4C /* SignInViewController.swift */; };
+		8234CA64249E51AC00CDDA4C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234CA63249E51AC00CDDA4C /* SignInView.swift */; };
 		82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7D2442EC7F0007D581 /* AppDelegate.swift */; };
 		82394D802442EC7F0007D581 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D7F2442EC7F0007D581 /* SceneDelegate.swift */; };
 		82394D822442EC7F0007D581 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D812442EC7F0007D581 /* MapView.swift */; };
@@ -44,8 +44,8 @@
 		8202B33B24488B2300A01FAE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8202B33E2448948200A01FAE /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		8234CA5E249E4DB400CDDA4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8234CA61249E51A500CDDA4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		8234CA63249E51AC00CDDA4C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8234CA61249E51A500CDDA4C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8234CA63249E51AC00CDDA4C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		82394D7A2442EC7F0007D581 /* mSNS_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSNS_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82394D7D2442EC7F0007D581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82394D7F2442EC7F0007D581 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		8234CA60249E518C00CDDA4C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8234CA61249E51A500CDDA4C /* LoginViewController.swift */,
-				8234CA63249E51AC00CDDA4C /* LoginView.swift */,
+				8234CA61249E51A500CDDA4C /* SignInViewController.swift */,
+				8234CA63249E51AC00CDDA4C /* SignInView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8234CA62249E51A500CDDA4C /* LoginViewController.swift in Sources */,
+				8234CA62249E51A500CDDA4C /* SignInViewController.swift in Sources */,
 				8202B33F2448948200A01FAE /* AddView.swift in Sources */,
 				8202B33A24488AB800A01FAE /* BottomTabView.swift in Sources */,
 				82394D7E2442EC7F0007D581 /* AppDelegate.swift in Sources */,
@@ -416,7 +416,7 @@
 				82CC23A6244DC66800DEF3FE /* MarkerCoordinator.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
-				8234CA64249E51AC00CDDA4C /* LoginView.swift in Sources */,
+				8234CA64249E51AC00CDDA4C /* SignInView.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* CustomMarkerView.swift in Sources */,
 			);

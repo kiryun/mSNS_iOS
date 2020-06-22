@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
                     if Auth.auth().currentUser != nil{
                         window.rootViewController = UIHostingController(rootView: BottomTabView())
                     }else{
-                        window.rootViewController = LoginViewController()
+                        window.rootViewController = SignInViewController()
                     }
         //            window.rootViewController = UIHostingController(rootView: contentView)
                     self.window = window
