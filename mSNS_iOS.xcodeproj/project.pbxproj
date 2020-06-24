@@ -112,13 +112,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		8234CA60249E518C00CDDA4C /* Login */ = {
+		8234CA60249E518C00CDDA4C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
 				8234CA61249E51A500CDDA4C /* SignInViewController.swift */,
 				8234CA63249E51AC00CDDA4C /* SignInView.swift */,
 			);
-			path = Login;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		82394D712442EC7F0007D581 = {
@@ -147,7 +147,7 @@
 				82394D912442ECCE0007D581 /* Communication */,
 				82F0D1B2247AA32100AF0F1E /* Model */,
 				8202B3352445ECA500A01FAE /* Map_UIKit */,
-				8234CA60249E518C00CDDA4C /* Login */,
+				8234CA60249E518C00CDDA4C /* SignIn */,
 				8202B33824488A8800A01FAE /* UI */,
 				82394D922442ECD70007D581 /* Apps */,
 				82CE1BB0244F39A6005936EE /* Resources */,

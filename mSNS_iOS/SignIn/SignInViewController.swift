@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
+import SwiftUI
 
 class SignInViewController: UIViewController{
     let gButton: GIDSignInButton = GIDSignInButton()
@@ -98,6 +99,12 @@ extension SignInViewController: LoginButtonDelegate{
                 } else {
                     // User is signed in
                     print("FB signed in")
+                    
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate else{
+                        return
+                    }
+                    
+                    sceneDelegate.window?.rootViewController = UIHostingController(rootView: BottomTabView())
                 }
             }
         }

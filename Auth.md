@@ -426,6 +426,10 @@ class SignInViewController: UIViewController{
 **SignInViewController.swift**
 
 ```swift
+// 생략 ...
+import SwiftUI
+// 생략 ...
+
 // for facebook login
 extension SignInViewController: LoginButtonDelegate{
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
@@ -449,6 +453,11 @@ extension SignInViewController: LoginButtonDelegate{
                 } else {
                     // User is signed in
                     print("FB signed in")
+                  	guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate else{
+                        return
+                    }
+                    
+                    sceneDelegate.window?.rootViewController = UIHostingController(rootView: BottomTabView())
                 }
             }
         }
@@ -488,3 +497,100 @@ struct ProfileView: View {
 }
 ```
 
+
+
+<img src="Auth.assets/image-20200624215617569.png" alt="image-20200624215617569" style="zoom:25%;" />
+
+실행을 해보면 이와같은 화면이 출력될텐데 이는 아직 개발중에서 live로 전환이 되지않아서 생기는 문제이다.
+
+(아래 그림에서  상태가 현재 "개발 중"이다.)
+
+![image-20200624215714375](Auth.assets/image-20200624215714375.png)
+
+
+
+이 경우 개발자를 등록을 해줘야한다.
+
+테스터 등록은 역할 > 역할 에서 등록할 수 있다.
+
+![image-20200624215850043](Auth.assets/image-20200624215850043.png)
+
+이제 개발자를 추가해야하는데 아래와 같은 화면이 출력될 것이다. 추가할 개발자의 username을 적어주면 되는데 페이스북 프로필 url  `facebook.com/{username}`  에서 username을 적어준다.
+
+혹시나 username이 설정되어 있지 않거나 이상한 해쉬값으로 되어있다면 https://www.facebook.com/settings?tab=account&section=username 에서 username을 변경할 수 있다.
+
+완료를 했으면 facebook에서 해당계정으로 로그인한다음 "확인"을 눌러주면 된다.
+
+<img src="Auth.assets/image-20200624220417502.png" alt="image-20200624220417502" style="zoom:25%;" />
+
+> 페이스북을 넣는 순간 google쪽 sign-in이 완전히 죽어버리는데 이경우 info > URLTypes > Scheme 을 다시 수정해주면 된다.
+>
+> ![image-20200624221527984](Auth.assets/image-20200624221527984.png)
+>
+> > 근데 다시 또 실행하면 이번에는 Facebook이 실행되지 않는다. 또한 info.list에 facebook에 대한 정보가 사라져 있다.
+> >
+> > ![image-20200624221431998](Auth.assets/image-20200624221431998.png)
+> >
+> > 아마 CFBundleURLTypes key 가 Google과 Facebook 이 중복으로 사용되고 있어서 그런거 같다.
+> >
+> > 다음과 같이 CFBundleURLtypes>Google 코드 밑에 Facebook 을 추가해주자.
+> >
+> > ```xml
+> > <key>CFBundleURLTypes</key>
+> > 	<array>
+> >         <!--google-->
+> > 		<dict>
+> > 			<key>CFBundleTypeRole</key>
+> > 			<string>Editor</string>
+> > 			<key>CFBundleURLSchemes</key>
+> > 			<array>
+> > 				<string>com.googleusercontent.apps.asdf-asdf</string>
+> > 			</array>
+> > 		</dict>
+> >         <!--facebook-->
+> >         <dict>
+> >             <key>CFBundleURLSchemes</key>
+> >             <array>
+> >                 <string>asdf</string>
+> >             </array>
+> >         </dict>
+> > 	</array>
+> > ```
+> >
+> > 마지막으로 facebook appID/ 대화상자를 열수있는 코드도 추가해주도록한다.
+> >
+> > ```xml
+> > <key>FacebookAppID</key>
+> >     <string>asdf</string>
+> >     <key>FacebookDisplayName</key>
+> >     <string>mSNS</string>
+> >     
+> >     <key>LSApplicationQueriesSchemes</key>
+> >     <array>
+> >         <string>fbapi</string>
+> >         <string>fbapi20130214</string>
+> >         <string>fbapi20130410</string>
+> >         <string>fbapi20130702</string>
+> >         <string>fbapi20131010</string>
+> >         <string>fbapi20131219</string>
+> >         <string>fbapi20140410</string>
+> >         <string>fbapi20140116</string>
+> >         <string>fbapi20150313</string>
+> >         <string>fbapi20150629</string>
+> >         <string>fbapi20160328</string>
+> >         <string>fbauth</string>
+> >         <string>fb-messenger-share-api</string>
+> >         <string>fbauth2</string>
+> >         <string>fbshareextension</string>
+> >     </array>
+> > ```
+
+
+
+### Reference
+
+* Logout: https://stackoverflow.com/questions/42011252/firebase-facebook-login-button-does-not-change-after-user-log-out
+* sign-in
+  * https://developers.facebook.com/apps/141477280607703/fb-login/quickstart/?sdk=cocoapods
+  * https://velog.io/@wimes/Firebase-Auth
+  * https://www.youtube.com/watch?v=W8NzdN0h50I
