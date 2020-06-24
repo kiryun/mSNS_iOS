@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
 
@@ -82,8 +83,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
 
 }
 
+// MARK: GIDSignInDelegate
 extension SceneDelegate{
-    // MARK: GIDSignInDelegate
     // 해당 함수는 로그인 할 때 호출이 된다. 즉, 자동로그인 할 때 View를 어떻게 표현을 해줄 것인가를 여기서 설정해야함.
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         
@@ -125,5 +126,20 @@ extension SceneDelegate{
         // Perform any operations when the user disconnects from app here.
         // ...
         print("sign didDisconnectWith")
+    }
+}
+
+// MARK: Facebook
+extension SceneDelegate{
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let openURLContext: UIOpenURLContext = URLContexts.first{
+            ApplicationDelegate.shared.application(
+                UIApplication.shared,
+                open: openURLContext.url,
+                sourceApplication: openURLContext.options.sourceApplication,
+                annotation: openURLContext.options.annotation)
+        }else{
+            return
+        }
     }
 }

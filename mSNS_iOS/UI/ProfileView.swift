@@ -8,7 +8,7 @@
 
 import SwiftUI
 import Firebase
-//import FBSDKLoginKit
+import FBSDKLoginKit
 
 struct ProfileView: View {
     var body: some View {
@@ -25,8 +25,8 @@ struct ProfileView: View {
             try Auth.auth().signOut()
             
             //facebook signout
-//            AccessToken.current = nil
-//            LoginManager().logOut()
+            AccessToken.current = nil
+            LoginManager().logOut()
         }catch let signOutError as NSError{
             print(signOutError)
         }

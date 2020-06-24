@@ -274,3 +274,217 @@ credential을 이용해 FirebaseAuth에 로그인하고 signIn에 성공했으�
 >
 > 다시말해 Application에서는 더이상 Google OAuth 2.0 에 접근을 할 수 없는 상태가 되어버린다.
 
+
+
+## FacebookSignIn  추가
+
+[https://developers.facebook.com](https://developers.facebook.xn--com-k94n91q/) 에서 내앱 > 앱만들기를 클릭하여 프로젝트를 생성해준다.
+
+cocopod을 이용해 SDK를 설치해준다.
+
+`pod 'FBSDKLoginKit'`
+
+제품 > Facebook 로그인을 추가한다.
+
+iOS에서 설정을 완료해준다.(생략)
+
+
+
+**AppDelegate.swift** 에서 `FBSDKCoreKit`  을 import 해주고 
+
+`application(_ :open:options:) -> Bool` 를 구현해준다.
+
+```swift
+import FBSDKCoreKit
+
+class AppDelegate: UIResponder, UIApplicationDelegate{
+	  
+  	// ... 중간 생략
+  
+		@available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        //Google SignIn
+        // GID ref: https://developers.google.com/identity/sign-in/ios/sign-in?ver=swift
+        guard let instance = GIDSignIn.sharedInstance() else {
+            return false
+        }
+        
+        let gid = instance.handle(url)
+        
+        //FacebookSignIn
+        let fb = ApplicationDelegate.shared.application(
+            application,
+            open: (url as URL?)!,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+        
+        return gid || fb
+    }
+  
+  	// ... 중간 생략
+}
+```
+
+메서드를 구현하는데 다른 Auth 도 구현 하는게 있다면 반환값을 `||` 을 이용해 정해주도록 한다.
+
+
+
+> iOS 13이상을 사용하는 경우**SceneDelegate.swift**  를 구현해준다.
+>
+> ```swift
+> import FBSDKCoreKit
+> // ... 생략
+> 
+> // for facebook
+> extension SceneDelegate{
+>  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+>      if let openURLContext: UIOpenURLContext = URLContexts.first{
+>          ApplicationDelegate.shared.application(
+>              UIApplication.shared,
+>              open: openURLContext.url,
+>              sourceApplication: openURLContext.options.sourceApplication,
+>              annotation: openURLContext.options.annotation)
+>      }else{
+>          return
+>      }
+>  }
+> }
+> ```
+
+
+
+Firebase Console > Authentication > Sign-in method > Facebook에서 OAuth 리디렉션 URI를 가져와 Facebook Console > 설정 > 유효한 OAuth 리디렉션 URI 에 추가를 해줘야한다.
+
+![image-20200624191526515](Auth.assets/image-20200624191526515.png)
+
+![image-20200624191237848](Auth.assets/image-20200624191237848.png)
+
+
+
+Facebook > 설정 > 기본설정에서 앱 ID와 앱 시크릿 코드를 가져와 Firebase Console > Authentication > Sign-in method > Facebook 에 넣어준다.
+
+![image-20200624191655763](Auth.assets/image-20200624191655763.png)
+
+![image-20200624191526515](Auth.assets/image-20200624191526515.png)
+
+
+
+이제 로그인을 구현하도록 한다.
+
+**SignInViewController.swift**
+
+```swift
+import FBSDKLoginKit
+// 생략 ...
+
+class SignInViewController: UIViewController{
+    let gButton: GIDSignInButton = GIDSignInButton()
+    let fButton = FBLoginButton()
+  
+  	override func viewDidLoad(){
+        super.viewDidLoad()
+        
+        // Google sign in
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        // Automatically sign in the user.
+//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        self.drawGoogleButton()
+        
+        // Facebook sign in
+	      self.fButton.delegate = self
+        self.drawFacebookButton()
+        
+      	// 생략 ...
+    }
+  	
+  	func drawFacebookButton(){
+        self.fButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.fButton)
+        
+        let centerX: NSLayoutConstraint = self.fButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        let yAnchor: NSLayoutConstraint = NSLayoutConstraint(item: self.fButton,
+                                                             attribute: NSLayoutConstraint.Attribute.centerY,
+                                                             relatedBy: NSLayoutConstraint.Relation.equal,
+                                                             toItem: self.gButton,
+                                                             attribute: NSLayoutConstraint.Attribute.bottom,
+                                                             multiplier: 1.0,
+                                                             constant: 20)
+        
+        centerX.isActive = true
+        yAnchor.isActive = true
+    }
+  
+  	// 생략 ...
+}
+```
+
+
+
+위코드는 UI를 구현한 것이고 실제 로그인을 구현한다.
+
+**SignInViewController.swift**
+
+```swift
+// for facebook login
+extension SignInViewController: LoginButtonDelegate{
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("FB did log out")
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if error != nil{
+            print(error?.localizedDescription)
+            return
+        }else if result?.isCancelled == true{
+            print("Cancelled")
+        }else{
+            // fb login 성공 시
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error != nil {
+                    print(error?.localizedDescription)
+                    return
+                } else {
+                    // User is signed in
+                    print("FB signed in")
+                }
+            }
+        }
+    }
+}
+```
+
+
+
+로그아웃**ProfileView.swift**
+
+```swift
+import FBSDKLoginKit
+// 생략
+
+struct ProfileView: View {
+    // 생략
+    
+    func signOut(){
+        do{
+            try Auth.auth().signOut()
+            
+            //facebook signout
+            AccessToken.current = nil
+            LoginManager().logOut()
+        }catch let signOutError as NSError{
+            print(signOutError)
+        }
+        
+        // ref: https://gist.github.com/alexpaul/875d1c8ce45a5f536d0c81087285f4d8
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate else{
+            return
+        }
+        
+        sceneDelegate.window?.rootViewController = UIHostingController(rootView: SignInView())
+    }
+}
+```
+

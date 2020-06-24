@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,9 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let instance = GIDSignIn.sharedInstance() else {
             return false
         }
-        print("\(url)")
+        let gid = instance.handle(url)
         
-        return instance.handle(url)
+        //FacebookSignIn
+        let fb = ApplicationDelegate.shared.application(
+            application,
+            open: (url as URL?)!,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+        return gid || fb
     }
 
     // MARK: UISceneSession Lifecycle

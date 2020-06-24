@@ -9,6 +9,7 @@ target 'mSNS_iOS' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Auth'
 	pod 'GoogleSignIn'
+	pod 'FBSDKLoginKit'
   # Pods for mSNS_iOS
 
 end
