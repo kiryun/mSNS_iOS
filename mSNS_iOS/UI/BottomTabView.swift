@@ -17,6 +17,12 @@ struct BottomTabView: View {
                     Text("Map")
             }
             
+            RankView()
+                .tabItem {
+                    Image(systemName: "location")
+                    Text("Rank")
+            }
+            
             AddView()
                 .tabItem {
                     Image(systemName: "alarm")

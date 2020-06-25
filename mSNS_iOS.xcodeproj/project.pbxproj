@@ -25,6 +25,7 @@
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
 		82394D9F2442F04F0007D581 /* URLComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */; };
+		826DD0BB24A4E91D00446A85 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DD0BA24A4E91D00446A85 /* RankView.swift */; };
 		8273381224910C9A00C608AF /* TestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273381124910C9A00C608AF /* TestDataSet.swift */; };
 		82CC23A6244DC66800DEF3FE /* MarkerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC23A5244DC66800DEF3FE /* MarkerCoordinator.swift */; };
 		82CE1BB4244F3A90005936EE /* btn_heart_on in Resources */ = {isa = PBXBuildFile; fileRef = 82CE1BB1244F3A90005936EE /* btn_heart_on */; };
@@ -59,6 +60,7 @@
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
 		82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentBuilder.swift; sourceTree = "<group>"; };
+		826DD0BA24A4E91D00446A85 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		8273381124910C9A00C608AF /* TestDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataSet.swift; sourceTree = "<group>"; };
 		82CC23A5244DC66800DEF3FE /* MarkerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerCoordinator.swift; sourceTree = "<group>"; };
 		82CE1BB1244F3A90005936EE /* btn_heart_on */ = {isa = PBXFileReference; lastKnownFileType = folder; path = btn_heart_on; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				8202B33924488AB800A01FAE /* BottomTabView.swift */,
 				8202B33B24488B2300A01FAE /* ProfileView.swift */,
 				8202B33E2448948200A01FAE /* AddView.swift */,
+				826DD0BA24A4E91D00446A85 /* RankView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				82CC23A6244DC66800DEF3FE /* MarkerCoordinator.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
 				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
+				826DD0BB24A4E91D00446A85 /* RankView.swift in Sources */,
 				8234CA64249E51AC00CDDA4C /* SignInView.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,
 				82CE1BB92451E1F4005936EE /* CustomMarkerView.swift in Sources */,

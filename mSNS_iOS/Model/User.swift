@@ -11,5 +11,9 @@ import Foundation
 struct User{
     static let shared = User()
     var uID: Int?
+    var displayName: String?
+    var email: String?
+    var provider: String?
+    var locale: String?
 }
 
