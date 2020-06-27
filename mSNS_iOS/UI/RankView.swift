@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RankView: View {
     var body: some View {
-        RankLayoutCase1()
+        RankLayoutCase2()
     }
 }
 
@@ -46,6 +46,49 @@ struct RankLayoutCase1: View {
                         Rectangle()
                             .fill(Color.blue)
                             .frame(width: geo.size.width/2, height: geo.size.height)
+                    }
+                    
+                }.frame(width: g.size.width, height: g.size.height/2)
+                
+            }
+        }
+    }
+}
+
+struct RankLayoutCase2: View {
+    var body: some View{
+        GeometryReader{ g in
+            VStack{
+                GeometryReader{ ge in
+                    HStack{
+                        Rectangle()
+                            .fill(Color.red)
+                            .frame(width: ge.size.width/2, height: ge.size.height)
+                        Rectangle()
+                            .fill(Color.orange)
+                            .frame(width: ge.size.width/2, height: ge.size.height)
+                    }
+                }.frame(width: g.size.width, height: g.size.height/2)
+                
+                GeometryReader{ geo in
+                    HStack{
+                        Rectangle()
+                            .fill(Color.blue)
+                            .frame(width: geo.size.width/2, height: geo.size.height)
+                        
+                        GeometryReader{ geom in
+                            VStack{
+                                Rectangle()
+                                    .fill(Color.yellow)
+                                    .frame(width: geom.size.width, height: geom.size.height/2)
+                                Rectangle()
+                                    .fill(Color.green)
+                                    .frame(width: geom.size.width, height: geom.size.height/2)
+                            }
+                            
+                        }.frame(width: geo.size.width/2, height: geo.size.height)
+                        
+                        
                     }
                     
                 }.frame(width: g.size.width, height: g.size.height/2)
