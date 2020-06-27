@@ -10,7 +10,14 @@ import SwiftUI
 
 struct RankView: View {
     var body: some View {
-        RankLayoutCase2()
+        GeometryReader{ g in
+            ScrollView(.vertical, showsIndicators: false){
+                VStack(spacing: 10){
+                    RankLayoutCase1()
+                    RankLayoutCase2()
+                }.frame(width: g.size.width, height: g.size.height)
+            }
+        }
     }
 }
 
