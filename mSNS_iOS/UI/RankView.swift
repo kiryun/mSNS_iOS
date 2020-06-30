@@ -15,7 +15,7 @@ struct RankView: View {
                 VStack(spacing: 10){
                     RankLayoutCase1()
                     RankLayoutCase2()
-                }.frame(width: g.size.width, height: g.size.height)
+                }.frame(width: g.size.width, height: g.size.height*2)
             }
         }
     }
