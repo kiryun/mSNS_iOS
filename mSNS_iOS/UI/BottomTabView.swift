@@ -29,6 +29,12 @@ struct BottomTabView: View {
                     Text("Picture")
             }
             
+            ArticleView()
+                .tabItem {
+                    Image(systemName: "cloud")
+                    Text("Follow")
+            }
+            
             ProfileView()
                 .tabItem {
                     Image(systemName: "cloud")
