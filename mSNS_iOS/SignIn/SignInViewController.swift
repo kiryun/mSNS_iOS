@@ -100,6 +100,8 @@ extension SignInViewController: LoginButtonDelegate{
                     // User is signed in
                     print("FB signed in")
                     
+                    User.shared.displayName = Auth.auth().currentUser?.displayName
+                    
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate else{
                         return
                     }

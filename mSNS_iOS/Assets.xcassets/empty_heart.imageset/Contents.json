@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "btn_heart_on.png",
+      "filename" : "empty_heart.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

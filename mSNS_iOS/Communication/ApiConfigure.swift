@@ -24,7 +24,7 @@ struct Configure {
 }
 
 enum URLs : String {
-    case LOGIN = "/accounts/v3/global/login"
+    case SIGN_IN = "/user/sign-in"
     //set은 post get은 get으로 Method 지정
     
     func setHostWithPathComponentURL(pathvalues : NSMutableDictionary?) -> String {

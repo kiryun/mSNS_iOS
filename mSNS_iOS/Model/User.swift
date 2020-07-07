@@ -9,7 +9,7 @@
 import Foundation
 
 struct User{
-    static let shared = User()
+    static var shared = User()
     var uID: Int?
     var displayName: String?
     var email: String?

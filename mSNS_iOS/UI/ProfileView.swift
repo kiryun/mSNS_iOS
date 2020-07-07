@@ -13,7 +13,7 @@ import FBSDKLoginKit
 struct ProfileView: View {
     var body: some View {
         VStack{
-            Text("ProfileView")
+            Text("Hello \(User.shared.displayName!)!")
             Button(action: self.signOut){
                 Text("Sign out")
             }

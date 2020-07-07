@@ -42,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
                     
                     
                     if Auth.auth().currentUser != nil{
+                        User.shared.displayName = Auth.auth().currentUser?.displayName
                         window.rootViewController = UIHostingController(rootView: BottomTabView())
                     }else{
                         window.rootViewController = SignInViewController()
@@ -99,7 +100,7 @@ extension SceneDelegate{
         
         // Perform any operations on signed in user here.
         guard let authentication = user.authentication else { return }
-        
+
         // return A FIRAuthCredential containing the Google credentials.
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                         accessToken: authentication.accessToken)
@@ -115,6 +116,8 @@ extension SceneDelegate{
             
             // user is signed in
             // ...
+            
+            User.shared.displayName = Auth.auth().currentUser?.displayName
             
             print("AppDelegate.sign().auth.signIn.authResult.profile: \((authResult?.additionalUserInfo?.profile)!)")
             self.window?.rootViewController = UIHostingController(rootView: BottomTabView())
