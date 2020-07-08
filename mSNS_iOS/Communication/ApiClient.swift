@@ -96,7 +96,7 @@ extension ApiClient{
     }
     
     
-    func _post(url: URL, body: NSMutableDictionary, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+    func _post(url: URL, body: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"

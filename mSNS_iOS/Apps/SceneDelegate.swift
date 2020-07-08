@@ -116,8 +116,43 @@ extension SceneDelegate{
             
             // user is signed in
             // ...
-            
+            let currentUser = Auth.auth().currentUser
+            currentUser?.getIDToken(completion: { token, error in
+                if error != nil{
+                    print("failed get token: \(error?.localizedDescription)")
+                }else{
+                    // request param
+                    // token
+                    // name
+                    // email
+                    // provider
+                    var param: [String: Any] = [String: Any]()
+                    param["token"] = token
+                    param["name"] = currentUser?.displayName
+                    param["email"] = currentUser?.email
+                    param["provider"] = currentUser?.providerID
+                    
+                    //response
+                    // user_id
+                    RequestManager.shared.request(identifier: .SIGN_IN, param: param) { data, response, error in
+                        if error != nil{
+                            print(error?.localizedDescription)
+                        }else{
+                            do{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                                print("data: \(json)")
+                            }catch{
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                }
+            })
             User.shared.displayName = Auth.auth().currentUser?.displayName
+            
             
             print("AppDelegate.sign().auth.signIn.authResult.profile: \((authResult?.additionalUserInfo?.profile)!)")
             self.window?.rootViewController = UIHostingController(rootView: BottomTabView())

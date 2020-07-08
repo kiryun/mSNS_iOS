@@ -55,7 +55,6 @@ class CustomMarkerView: GMSMarker{
 
         self.resizingImages()
         
-        
         let markerView = UIImageView(image: self.background)
         let heartView = UIImageView(image: self.heartIcon)
         let thumnailView = UIImageView(image: self.thumnail)
