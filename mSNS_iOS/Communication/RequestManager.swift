@@ -8,22 +8,48 @@
 
 import Foundation
 
-class RequestManager{
-    static let shared = RequestManager()
-    let apiClient = ApiClient()
-    typealias completion = (Data?, URLResponse?, Error?) -> Void
+enum RequestIdentifier{
+    case TEST
+    case SIGN_IN
+    case SIGN_OUT
     
-    private init(){
+    var meghod: String{
+        switch self {
+        case .TEST:
+            return "GET"
+        case .SIGN_IN:
+            return "POST"
+        case .SIGN_OUT:
+            return "POST"
+        }
+    }
+}
+
+typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
+
+protocol RequestManagerProtocol {
+    func isOverlapRequest(with enum: RequestIdentifier) -> Bool
+    func appendRequest(with enum: RequestIdentifier, pram: [String: Any]?, completionHandler: @escaping CompletionHandler)
+}
+
+class RequestManager{
+    let apiClient = ApiClient()
+    
+    init(){
         
     }
     
-    enum Requests{
-        case SIGN_IN
-        case SIGN_OUT
-    }
-    
-    func request(identifier: Requests, param: [String: Any]?, completionHandler: @escaping completion) {
+    func request(identifier: RequestIdentifier, param: [String: Any]? = nil, completionHandler: @escaping CompletionHandler) {
         switch identifier {
+        case .TEST:
+            let builder = ComponentBuilder()
+            let director = ExternalComponentDirector(builder: builder)
+            let url = director
+                .setHost(host: "jsonplaceholder.typicode.com")
+                .setPath(path: "todos/1")
+                .build()
+            self.apiClient._get(url: url, completionHandler: completionHandler)
+            
         case .SIGN_IN:
             let builder = ComponentBuilder()
             let director = ExternalComponentDirector(builder: builder)
@@ -32,7 +58,10 @@ class RequestManager{
                 .setPath(path: URLs.SIGN_IN.rawValue)
                 .build()
             
-//            self.apiClient._post(url: <#T##URL#>, body: <#T##NSMutableDictionary#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+            if let p = param{
+                self.apiClient._post(url: url, body: p, completionHandler: completionHandler)
+            }
+            
         case .SIGN_OUT:
             let builder = ComponentBuilder()
             let director = ExternalComponentDirector(builder: builder)

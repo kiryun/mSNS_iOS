@@ -20,7 +20,7 @@ enum ContentType: String {
 }
 
 struct Configure {
-    static let baseURL: String = "http://localhost:3000"
+    static let baseURL: String = "localhost"
 }
 
 enum URLs : String {

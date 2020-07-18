@@ -92,20 +92,24 @@ extension ApiClient{
         request.httpMethod = "GET"
         request.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         
-        self.session.dataTask(with: request, completionHandler: completionHandler)
+        self.session.dataTask(with: request, completionHandler: completionHandler).resume()
     }
     
     
     func _post(url: URL, body: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+        print(url)
+        print(body)
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"
         do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let json = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            request.httpBody = json
         }catch{
             print("APIClient._post: \(error)")
         }
         
-        self.session.dataTask(with: request, completionHandler: completionHandler)
+        self.session.dataTask(with: request, completionHandler: completionHandler).resume()
     }
 }

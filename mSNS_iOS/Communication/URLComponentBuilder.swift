@@ -45,7 +45,9 @@ class ComponentDirector : ComponentDirectorProtocol
     init(builder : ComponentBuilderProtocol) {
         print("ComponentDirector generate")
         self.builder = builder
-        self.builder.components.scheme = "https"
+        self.builder.components.scheme = "http"
+//        self.builder.components.scheme = "https"
+//        self.builder.components.port = 3000
     }
     
     func setPath(path: String) -> ComponentDirector{

@@ -91,7 +91,7 @@ extension SignInViewController: LoginButtonDelegate{
         }else{
             // fb login 성공 시
             let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-            
+            //accessToken: 같은 계정이라도 같은 값을 보장해주지는 않는다.
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if error != nil {
                     print(error?.localizedDescription)
