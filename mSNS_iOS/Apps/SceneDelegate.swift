@@ -127,45 +127,45 @@ extension SceneDelegate{
                     // idToken: 동일 계정이라고 해도 항상 token 값이 다르다.
                     let requestM = RequestManager()
                     // test
-                    requestM.request(identifier: .TEST, param: nil) { data, response, error in
-                        if error != nil{
-                            print(error?.localizedDescription)
-                        }else{
-                            do{
-                                let json = try
-                                JSONSerialization.jsonObject(with: data!, options: [])
-                                print("data: \(json)")
-                            }catch{
-                                print(error.localizedDescription)
-                            }
-                        }
-                    }
-                    
-                    // request param
-                    // token
-                    // name
-                    // email
-                    // provider
-//                    var param: [String: Any] = [String: Any]()
-//                    param["token"] = "token"
-//                    param["name"] = currentUser?.displayName
-//                    param["email"] = currentUser?.email
-//                    param["provider"] = currentUser?.providerID
-//                    
-//                    //response
-//                    // user_id
-//                    RequestManager.shared.request(identifier: .SIGN_IN, param: param) { data, response, error in
+//                    requestM.request(identifier: .TEST, param: nil) { data, response, error in
 //                        if error != nil{
 //                            print(error?.localizedDescription)
 //                        }else{
 //                            do{
-//                                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+//                                let json = try
+//                                JSONSerialization.jsonObject(with: data!, options: [])
 //                                print("data: \(json)")
 //                            }catch{
 //                                print(error.localizedDescription)
 //                            }
 //                        }
 //                    }
+                    
+                    // request param
+                    // token
+                    // name
+                    // email
+                    // provider
+                    var param: [String: Any] = [String: Any]()
+                    param["token"] = "token"
+                    param["name"] = currentUser?.displayName
+                    param["email"] = currentUser?.email
+                    param["provider"] = currentUser?.providerID
+                    
+                    //response
+                    // user_id
+                    requestM.request(identifier: .SIGN_IN, param: param) { data, response, error in
+                        if error != nil{
+                            print(error?.localizedDescription)
+                        }else{
+                            do{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                                print("data: \(json)")
+                            }catch{
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
                     
                     
                     
