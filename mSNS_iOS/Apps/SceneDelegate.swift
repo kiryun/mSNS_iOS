@@ -133,7 +133,7 @@ extension SceneDelegate{
                 body["name"] = currentUser?.displayName
                 body["provider"] = currentUser?.providerID
                 
-                requestM.request(identifier: .SIGN_IN) { data, response, error in
+                requestM.request(identifier: .TEST) { data, response, error in
                     // 통신에 실패한 경우
                     if error != nil{
                         print(error)
