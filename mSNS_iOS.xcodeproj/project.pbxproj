@@ -20,7 +20,6 @@
 		82394D842442EC800007D581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82394D832442EC800007D581 /* Assets.xcassets */; };
 		82394D872442EC800007D581 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82394D862442EC800007D581 /* Preview Assets.xcassets */; };
 		82394D8A2442EC800007D581 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82394D882442EC800007D581 /* LaunchScreen.storyboard */; };
-		82394D942442ED0E0007D581 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D932442ED0E0007D581 /* ApiClient.swift */; };
 		82394D962442ED520007D581 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D952442ED520007D581 /* Promise.swift */; };
 		82394D992442EDC60007D581 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D982442EDC60007D581 /* Utils.swift */; };
 		82394D9B2442EE630007D581 /* ApiConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82394D9A2442EE630007D581 /* ApiConfigure.swift */; };
@@ -59,7 +58,6 @@
 		82394D862442EC800007D581 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		82394D892442EC800007D581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82394D8B2442EC800007D581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82394D932442ED0E0007D581 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		82394D952442ED520007D581 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		82394D982442EDC60007D581 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		82394D9A2442EE630007D581 /* ApiConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigure.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 		82394D912442ECCE0007D581 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				82394D932442ED0E0007D581 /* ApiClient.swift */,
 				82394D9A2442EE630007D581 /* ApiConfigure.swift */,
 				82394D9E2442F04F0007D581 /* URLComponentBuilder.swift */,
 				8240055024B6154C00B7129C /* RequestManager.swift */,
@@ -440,7 +437,6 @@
 				82394D822442EC7F0007D581 /* MapView.swift in Sources */,
 				82CC23A6244DC66800DEF3FE /* MarkerCoordinator.swift in Sources */,
 				8202B3372445ED1700A01FAE /* GeoCoding.swift in Sources */,
-				82394D942442ED0E0007D581 /* ApiClient.swift in Sources */,
 				826DD0BB24A4E91D00446A85 /* RankView.swift in Sources */,
 				8234CA64249E51AC00CDDA4C /* SignInView.swift in Sources */,
 				82394D992442EDC60007D581 /* Utils.swift in Sources */,

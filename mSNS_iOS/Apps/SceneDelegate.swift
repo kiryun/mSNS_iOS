@@ -120,10 +120,11 @@ extension SceneDelegate{
             let currentUser = Auth.auth().currentUser
             
             currentUser?.getIDTokenForcingRefresh(true, completion: { idToken, error in
-                if error != nil{
-                    print("failed get token: \(error?.localizedDescription)")
+                if let error = error{
+                    print("failed get token: \(error.localizedDescription)")
                     return
                 }
+                
                 let requestM = RequestManager()
                 var body = [String: Any]()
                 if let token = idToken{
@@ -133,9 +134,9 @@ extension SceneDelegate{
                 body["name"] = currentUser?.displayName
                 body["provider"] = currentUser?.providerID
                 
-                requestM.request(identifier: .TEST) { data, response, error in
+                requestM.request(identifier: .SIGN_IN, body: body) { data, response, error in
                     // 통신에 실패한 경우
-                    if error != nil{
+                    if let error = error{
                         print(error)
                     }else{
                         do{
@@ -147,56 +148,6 @@ extension SceneDelegate{
                     }
                 }
             })
-            
-//            currentUser?.getIDToken(completion: { token, error in
-//                if error != nil{
-//                    print("failed get token: \(error?.localizedDescription)")
-//                }else{
-//                    // idToken: 동일 계정이라고 해도 항상 token 값이 다르다.
-//                    let requestM = RequestManager()
-//                    // test
-////                    requestM.request(identifier: .TEST, param: nil) { data, response, error in
-////                        if error != nil{
-////                            print(error?.localizedDescription)
-////                        }else{
-////                            do{
-////                                let json = try
-////                                JSONSerialization.jsonObject(with: data!, options: [])
-////                                print("data: \(json)")
-////                            }catch{
-////                                print(error.localizedDescription)
-////                            }
-////                        }
-////                    }
-//
-//                    // request param
-//                    // token
-//                    // name
-//                    // email
-//                    // provider
-//                    var param: [String: Any] = [String: Any]()
-//                    param["token"] = "token"
-//                    param["name"] = currentUser?.displayName
-//                    param["email"] = currentUser?.email
-//                    param["provider"] = currentUser?.providerID
-//
-//                    //response
-//                    // user_id
-//                    requestM.request(identifier: .SIGN_IN, param: param) { data, response, error in
-//                        // 통신에 실패한 경우
-//                        if error != nil{
-//                            print(error)
-//                        }else{
-//                            do{
-//                                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-//                                print("data: \(json)")
-//                            }catch{
-//                                print(error)
-//                            }
-//                        }
-//                    }
-//                }
-//            })
             
             User.shared.displayName = Auth.auth().currentUser?.displayName
             

@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 class MarkerCoordinator{
-    let apiClient = ApiClient()
+    
     
     // Server에서 현재 보여지고 있는 지역에서 가장 핫한 마커 위치 가져오기
     func testDataSet() -> MarkerDataSet?{

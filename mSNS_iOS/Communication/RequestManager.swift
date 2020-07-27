@@ -9,14 +9,11 @@
 import Foundation
 
 enum RequestIdentifier{
-    case TEST
     case SIGN_IN
     case SIGN_OUT
     
-    var meghod: String{
+    var method: String{
         switch self {
-        case .TEST:
-            return "GET"
         case .SIGN_IN:
             return "POST"
         case .SIGN_OUT:
@@ -33,54 +30,13 @@ protocol RequestManagerProtocol {
 }
 
 class RequestManager{
-    let apiClient = ApiClient()
     
     init(){
         
     }
     
-    func request(identifier: RequestIdentifier, param: [String: Any]? = nil, completionHandler: @escaping CompletionHandler) {
+    func request(identifier: RequestIdentifier, body: [String: Any]? = nil, completionHandler: @escaping CompletionHandler) {
         switch identifier {
-        case .TEST:
-//            let builder = ComponentBuilder()
-//            let director = ExternalComponentDirector(builder: builder)
-//            let url = director
-//                .setHost(host: "jsonplaceholder.typicode.com")
-//                .setPath(path: "todos/1")
-//                .build()
-//            self.apiClient._get(url: url, completionHandler: completionHandler)
-            print("wimes")
-            let u = URL(string: "http://localhost:3000/user/sign-in")!
-            var req = URLRequest(url: u)
-            req.httpMethod = "POST"
-            req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            var body = [String: Any]()
-            body["token"] = "asdf"
-            body["email"] = "asdf@asdf.com"
-            body["name"] = "wimes"
-            body["provider"] = "google"
-            do{
-                let json = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
-                req.httpBody = json
-            }catch{
-                print(error.localizedDescription)
-            }
-
-            let session = URLSession.shared
-            session.dataTask(with: req) { data, res, err in
-                if err != nil{
-                    print(err?.localizedDescription)
-                    return
-                }
-                if let data = data{
-
-                    if let jsonString = String(data: data, encoding: .utf8){
-                        print(jsonString)
-                    }
-                }
-            }.resume()
-            
         case .SIGN_IN:
             let builder = ComponentBuilder()
             let director = ExternalComponentDirector(builder: builder)
@@ -89,8 +45,8 @@ class RequestManager{
                 .setPath(path: URLs.SIGN_IN.rawValue)
                 .build()
             
-            if let p = param{
-                self.apiClient._post(url: url, body: p, completionHandler: completionHandler)
+            if let b = body{
+                self.post(url: url, body: b, completionHandler: completionHandler)
             }
             
             
@@ -102,8 +58,38 @@ class RequestManager{
                 .setPath(path: URLs.SIGN_IN.rawValue)
                 .build()
             
-            self.apiClient._get(url: url, completionHandler: completionHandler)
+            self.get(url: url, completionHandler: completionHandler)
         }
     }
     
+}
+
+// post get
+extension RequestManager{
+    func get(url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+        var request: URLRequest = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        request.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+        
+        URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
+    }
+    
+    
+    func post(url: URL, body: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
+        print(url)
+        print(body)
+        var request: URLRequest = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        do{
+            let json = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            request.httpBody = json
+        }catch{
+            print("APIClient._post: \(error)")
+        }
+        
+        URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
+    }
 }

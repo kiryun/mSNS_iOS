@@ -9,7 +9,7 @@
 import Foundation
 
 class RankViewModel: ObservableObject{
-    let apiClient = ApiClient()
+    
     let dGroup = DispatchGroup()
     
     // rankView에서 스크롤 할 때마다 ? 호출되는 메서드
