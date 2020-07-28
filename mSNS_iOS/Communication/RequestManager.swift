@@ -83,8 +83,7 @@ extension RequestManager{
         
         request.httpMethod = "POST"
         do{
-            let json = try JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
+            let json = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = json
         }catch{
             print("APIClient._post: \(error)")

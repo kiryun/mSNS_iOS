@@ -132,7 +132,6 @@ extension SceneDelegate{
                 }
                 body["email"] = currentUser?.email
                 body["name"] = currentUser?.displayName
-                body["provider"] = currentUser?.providerID
                 
                 requestM.request(identifier: .SIGN_IN, body: body) { data, response, error in
                     // 통신에 실패한 경우
@@ -143,7 +142,7 @@ extension SceneDelegate{
                             let json = try JSONSerialization.jsonObject(with: data!, options: [])
                             print("data: \(json)")
                         }catch{
-                            print(error)
+                            print("error: \(error)")
                         }
                     }
                 }
