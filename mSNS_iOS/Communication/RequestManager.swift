@@ -45,7 +45,7 @@ class RequestManager{
                 .setPath(path: URLs.SIGN_IN.rawValue)
                 .build()
             
-            if let b = body{
+            if let b: [String: Any] = body{
                 self.post(url: url, body: b, completionHandler: completionHandler)
             }
             
@@ -82,6 +82,7 @@ extension RequestManager{
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"
+        request.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         do{
             let json = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = json

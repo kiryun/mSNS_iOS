@@ -117,9 +117,11 @@ extension SceneDelegate{
             
             // user is signed in
             // ...
-            let currentUser = Auth.auth().currentUser
+            guard let currentUser = Auth.auth().currentUser else{
+                return
+            }
             
-            currentUser?.getIDTokenForcingRefresh(true, completion: { idToken, error in
+            currentUser.getIDTokenForcingRefresh(true, completion: { idToken, error in
                 if let error = error{
                     print("failed get token: \(error.localizedDescription)")
                     return
@@ -130,8 +132,8 @@ extension SceneDelegate{
                 if let token = idToken{
                     body["token"] = token
                 }
-                body["email"] = currentUser?.email
-                body["name"] = currentUser?.displayName
+                body["email"] = currentUser.email
+                body["name"] = currentUser.displayName
                 
                 requestM.request(identifier: .SIGN_IN, body: body) { data, response, error in
                     // 통신에 실패한 경우
