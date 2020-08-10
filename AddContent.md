@@ -94,5 +94,13 @@ struct BottomTabView: View {
 > >
 > > https://github.com/AndreaMiotto/ActionOver
 > >
-> > 
+> > 얘도 마찬가지로 iPad Pro(4th, ipadOS 13.6), Simulator (iPhone 11 XS Max, iOS 13.6) 둘다 constraint error 출력
+>
+> > ## 결론
+> >
+> > Simulator와 iPad에서는 제대로 동작하지 않지만 일단 실기기(iPhone 8, iOS 13.6)에서는 잘동작함.
+> >
+> > 일단은 기본 ActionSheet을 사용하는 것으로 일단락.
+
+
 

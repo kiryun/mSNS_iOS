@@ -305,6 +305,8 @@
 			dependencies = (
 			);
 			name = mSNS_iOS;
+			packageProductDependencies = (
+			);
 			productName = mSNS_iOS;
 			productReference = 82394D7A2442EC7F0007D581 /* mSNS_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -333,6 +335,8 @@
 				Base,
 			);
 			mainGroup = 82394D712442EC7F0007D581;
+			packageReferences = (
+			);
 			productRefGroup = 82394D7B2442EC7F0007D581 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

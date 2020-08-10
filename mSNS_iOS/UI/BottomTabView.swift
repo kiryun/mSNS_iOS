@@ -48,21 +48,20 @@ struct BottomTabView: View {
             }
             .tag(5)
         }
-//        .sheet(isPresented: self.$tabData.isItemSelected) {
-//            Text("message")
-//        }
-        .actionSheet(isPresented: self.$tabData.isItemSelected) {
-
-            return ActionSheet(title: Text("Title"),
-                        message: Text("Message"),
-                        buttons: [.default(Text("Option 1"), action: self.option1),
-                                  .default(Text("Option 2"), action: self.option2) ,
-                                  .cancel()]
-            )
+        .actionSheet(isPresented: self.$tabData.isItemSelected) { () -> ActionSheet in
+            return ActionSheet(title: Text("title"),
+                               message: Text("message"),
+                               buttons: [
+                                .default(Text("option 1"), action: self.option1),
+                                .default(Text("option 2"), action: self.option2)
+            ])
         }
         
     }
+}
 
+
+extension BottomTabView{
     func option1(){
         self.tabData.reset()
     }
@@ -71,4 +70,3 @@ struct BottomTabView: View {
         self.tabData.reset()
     }
 }
-
