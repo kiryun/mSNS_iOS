@@ -72,7 +72,7 @@ struct BottomTabView: View {
 }
 ```
 
-![image-20200810205328765](/Users/gihyunkim/Library/Application Support/typora-user-images/image-20200810205328765.png)
+<img src="/Users/gihyunkim/Library/Application Support/typora-user-images/image-20200810205328765.png" alt="image-20200810205328765" style="zoom: 33%;" />
 
 > # Bug
 >
@@ -103,4 +103,20 @@ struct BottomTabView: View {
 > > 일단은 기본 ActionSheet을 사용하는 것으로 일단락.
 
 
+
+## Only Text 
+
+
+
+
+
+## Camera (Custom Camera )
+
+참고: https://stackoverflow.com/questions/58847638/swiftui-custom-camera-view
+
+SwiftUI에서 Camera를 사용하는 것은 아직 지원하지 않는다. 이는 UIKit을 이용해 사용해야하며 그 내용은 다음과 같다.
+
+
+
+## Album ( Custom Image Picker )
 

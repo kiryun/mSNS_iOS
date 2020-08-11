@@ -10,12 +10,6 @@ import SwiftUI
 
 struct AddContentView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddContentView()
+        Text("AddContentView: virtual view")
     }
 }
