@@ -11,7 +11,9 @@ import SwiftUI
 struct BottomTabView: View {
     
     @ObservedObject private var tabData = BottomTabBarData(initialIndex: 1, itemIndex: 3)
-    @State private var pickerFlag = false
+    @State private var ImagePickerViewFlag = false
+    @State private var cameraViewFlag = false
+    @State private var image: UIImage?
     var body: some View {
         TabView (selection: self.$tabData.itemSelected){
             MapView()
@@ -51,14 +53,17 @@ struct BottomTabView: View {
         .actionSheet(isPresented: self.$tabData.isItemSelected) { () -> ActionSheet in
             return ActionSheet(title: Text("Add Content"),
                                buttons: [
-                                .default(Text("Camera"), action: self.option1),
-                                .default(Text("Picture"), action: self.option2),
+                                .default(Text("Picture"), action: self.option1),
+                                .default(Text("Camera"), action: self.option2),
 //                                .destructive(Text("Cancel"), action: self.cancel)
                                 .cancel(Text("Cancel"), action: self.cancel)
             ])
         }
-        .sheet(isPresented: self.$pickerFlag) {
-            AddContentView()
+//        .sheet(isPresented: self.$ImagePickerViewFlag) {
+//            AddContentView()
+//        }
+        .sheet(isPresented: self.$cameraViewFlag) {
+            CameraView(image: self.$image)
         }
         
     }
@@ -67,11 +72,12 @@ struct BottomTabView: View {
 extension BottomTabView{
     func option1(){
         self.tabData.reset()
-        self.pickerFlag = true
+        self.ImagePickerViewFlag = true
     }
     
     func option2(){
         self.tabData.reset()
+        self.cameraViewFlag = true
     }
     
     func cancel(){
