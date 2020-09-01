@@ -25,9 +25,9 @@ struct CameraView: View {
 struct CaptureButtonView: View {
     @State private var animationAmount: CGFloat = 1
     var body: some View {
-        Image(systemName: "video").font(.largeTitle)
+        Image(systemName: "camera.aperture").font(.largeTitle)
             .padding(30)
-            .background(Color.red)
+//            .background(Color.red)
             .foregroundColor(.white)
             .clipShape(Circle())
             .overlay(

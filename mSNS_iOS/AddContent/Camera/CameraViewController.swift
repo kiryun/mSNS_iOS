@@ -22,6 +22,7 @@ class CameraViewController: UIViewController{
     
     var delegate: AVCapturePhotoCaptureDelegate!
     
+    // camera capture 버튼 눌렀을 때 호출되는 메서드 여기에 이미지 데이터 저장
     func didTapRecord(){
         let settings = AVCapturePhotoSettings()
         self.photoOutput?.capturePhoto(with: settings, delegate: self.delegate)
@@ -50,8 +51,7 @@ extension CameraViewController{
     func setupDevice(){
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera],
                                                                       mediaType: AVMediaType.video,
-                                                                      position: AVCaptureDevice.Position.unspecified
-        )
+                                                                      position: AVCaptureDevice.Position.unspecified)
         
         for device in deviceDiscoverySession.devices{
             switch device.position {
@@ -69,12 +69,11 @@ extension CameraViewController{
     
     func setupInputOutput() {
         do {
-
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
-            captureSession.addInput(captureDeviceInput)
-            photoOutput = AVCapturePhotoOutput()
-            photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
-            captureSession.addOutput(photoOutput!)
+            let captureDeviceInput = try AVCaptureDeviceInput(device: self.currentCamera!)
+            self.captureSession.addInput(captureDeviceInput)
+            self.photoOutput = AVCapturePhotoOutput()
+            self.photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+            self.captureSession.addOutput(self.photoOutput!)
 
         } catch {
             print(error)
@@ -84,14 +83,14 @@ extension CameraViewController{
     
     func setupPreviewLayer()
     {
-        self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
         self.cameraPreviewLayer?.frame = self.view.frame
-        self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
+        self.view.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
 
     }
     func startRunningCaptureSession(){
-        captureSession.startRunning()
+        self.captureSession.startRunning()
     }
 }

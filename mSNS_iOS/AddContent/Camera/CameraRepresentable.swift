@@ -38,6 +38,7 @@ struct CameraRepresentable: UIViewControllerRepresentable{
             self.parent = parent
         }
 
+        // delegate method
         func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
 
             parent.didTapCapture = false
